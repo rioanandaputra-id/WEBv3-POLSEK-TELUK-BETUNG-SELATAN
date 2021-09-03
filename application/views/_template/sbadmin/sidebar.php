@@ -22,12 +22,12 @@
         <div id="menu_1" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="<?= base_url('admin/informasi/berita') ?>">Berita</a>
-                <a class="collapse-item" href="<?= base_url('admin/informasi/berita') ?>">Bhabin & Kring Serse</a>
-                <a class="collapse-item" href="<?= base_url('admin/informasi/berita') ?>">Nomor Darurat</a>
-                <a class="collapse-item" href="<?= base_url('admin/informasi/artikel') ?>">Barang Hilang</a>
-                <a class="collapse-item" href="<?= base_url('admin/informasi/pengumuman') ?>">Orang Hilang</a>
-                <a class="collapse-item" href="<?= base_url('admin/informasi/gallery/foto') ?>">Tahanan</a>
-                <a class="collapse-item" href="<?= base_url('admin/informasi/gallery/video') ?>">Buronan</a>
+                <a class="collapse-item" href="<?= base_url('admin/informasi/bhabin') ?>">Bhabin & Kring Serse</a>
+                <a class="collapse-item" href="<?= base_url('admin/informasi/nomor') ?>">Nomor Darurat</a>
+                <a class="collapse-item" href="<?= base_url('admin/informasi/barang') ?>">Barang Hilang</a>
+                <a class="collapse-item" href="<?= base_url('admin/informasi/orang') ?>">Orang Hilang</a>
+                <a class="collapse-item" href="<?= base_url('admin/informasi/tahanan') ?>">Tahanan</a>
+                <a class="collapse-item" href="<?= base_url('admin/informasi/buronan') ?>">Buronan</a>
             </div>
         </div>
     </li>

@@ -19,6 +19,7 @@
                                             <label><strong>Foto Barang: <i class="text-danger">*</i></strong></label>
                                             <?php $foto = ($record->TIPE_FOTO == 'url') ? $record->FOTO : base_url('assets/upload/barang/') . $record->FOTO; ?>
                                             <img id="image-preview" src="<?= $foto; ?>" width="140" height="120" onclick="show_modal()">
+                                            <input type="hidden" name="ID" id="ID" value="<?= $record->ID_BARANG; ?>">
                                             <input type="hidden" name="FOTO" id="FOTO" value="<?= $record->FOTO; ?>">
                                             <input type="hidden" name="TIPE_FOTO" id="TIPE_FOTO" value="<?= $record->TIPE_FOTO; ?>">
                                         </div>

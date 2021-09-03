@@ -17,3 +17,15 @@ $route['admin/informasi/nomor'] = 'admin/nomor';
 $route['admin/informasi/barang'] = 'admin/barang';
 $route['admin/informasi/barang/tambah'] = 'admin/barang_add';
 $route['admin/informasi/barang/ubah/(:num)'] = 'admin/barang_edit/$1';
+
+$route['admin/informasi/orang'] = 'admin/orang';
+$route['admin/informasi/orang/tambah'] = 'admin/orang_add';
+$route['admin/informasi/orang/ubah/(:num)'] = 'admin/orang_edit/$1';
+
+$route['admin/informasi/tahanan'] = 'admin/tahanan';
+$route['admin/informasi/tahanan/tambah'] = 'admin/tahanan_add';
+$route['admin/informasi/tahanan/ubah/(:num)'] = 'admin/tahanan_edit/$1';
+
+$route['admin/informasi/buronan'] = 'admin/buronan';
+$route['admin/informasi/buronan/tambah'] = 'admin/buronan_add';
+$route['admin/informasi/buronan/ubah/(:num)'] = 'admin/buronan_edit/$1';

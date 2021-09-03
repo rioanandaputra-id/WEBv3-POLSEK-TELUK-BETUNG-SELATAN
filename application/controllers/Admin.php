@@ -1179,7 +1179,7 @@ class Admin extends BaseController
             $row[] = $field->CREATE_AT;
             $row[] = $field->KETERANGAN;
             $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_ORANG . ')"><i class="fas fa-trash-alt text-white"></i></button>';
-            $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/barang/ubah/') . $field->ID_ORANG . '"><i class="fas fa-edit text-white"></i></a>';
+            $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/orang/ubah/') . $field->ID_ORANG . '"><i class="fas fa-edit text-white"></i></a>';
             if ($field->PUBLISH == 1) {
                 $button_publish = '<button class="btn btn-sm btn-info" onclick="publish_informasi(' . "0," . $field->ID_ORANG . ')"><i class="fas fa-times-circle"></i></button>';
             } else {
@@ -1447,7 +1447,7 @@ class Admin extends BaseController
     public function tahanan()
     {
         $this->global = ['pageTitle' => 'Menu Informasi Tahanan', 'menuPage' => 2];
-        $this->LvBackend('_backend/buronan/list', $this->global, NULL, NULL, NULL);
+        $this->LvBackend('_backend/tahanan/list', $this->global, NULL, NULL, NULL);
     }
     public function tahanan_add()
     {
@@ -1475,7 +1475,7 @@ class Admin extends BaseController
             $row[] = $field->KASUS . '<br>' . $field->CREATE_AT . '<br>' . $field->KESATUAN;
             $row[] = $field->KETERANGAN;
             $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_TAHANAN   . ')"><i class="fas fa-trash-alt text-white"></i></button>';
-            $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/barang/ubah/') . $field->ID_TAHANAN  . '"><i class="fas fa-edit text-white"></i></a>';
+            $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/tahanan/ubah/') . $field->ID_TAHANAN  . '"><i class="fas fa-edit text-white"></i></a>';
             if ($field->PUBLISH == 1) {
                 $button_publish = '<button class="btn btn-sm btn-info" onclick="publish_informasi(' . "0," . $field->ID_TAHANAN  . ')"><i class="fas fa-times-circle"></i></button>';
             } else {
@@ -1807,7 +1807,7 @@ class Admin extends BaseController
             $row[] = $field->KASUS . '<br>' . $field->CREATE_AT;
             $row[] = $field->KETERANGAN;
             $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_BURONAN  . ')"><i class="fas fa-trash-alt text-white"></i></button>';
-            $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/barang/ubah/') . $field->ID_BURONAN  . '"><i class="fas fa-edit text-white"></i></a>';
+            $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/buronan/ubah/') . $field->ID_BURONAN  . '"><i class="fas fa-edit text-white"></i></a>';
             if ($field->PUBLISH == 1) {
                 $button_publish = '<button class="btn btn-sm btn-info" onclick="publish_informasi(' . "0," . $field->ID_BURONAN  . ')"><i class="fas fa-times-circle"></i></button>';
             } else {
