@@ -1,9 +1,9 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin'); ?>">
         <div class="sidebar-brand-icon">
-            <img src="<?= base_url('assets/FRONTEND/img/icon.ico'); ?>" height="30px">
+            <img src="<?= base_url('assets/frontend/img/polda.png'); ?>" height="60px">
         </div>
-        <div class="sidebar-brand-text"><img src="<?= base_url('assets/FRONTEND/img/logo2.png'); ?>" width="165px"></div>
+        <div class="sidebar-brand-text"><img src="<?= base_url('assets/frontend/img/polsek.png'); ?>" width="165px"></div>
     </a>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
@@ -32,15 +32,15 @@
         </div>
     </li>
 
-    <li class="nav-item" <?= $menuPage == 3 ? 'active' : ''; ?>>
+    <li class="nav-item <?= $menuPage == 3 ? 'active' : ''; ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu_2" aria-expanded="true" aria-controls="menu_2">
             <i class="fas fa-fw fa-bullhorn"></i>
             <span>Pengaduan</span>
         </a>
         <div id="menu_2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?= base_url('admin/informasi/berita') ?>">Umum</a>
-                <a class="collapse-item" href="<?= base_url('admin/informasi/berita') ?>">Covid-19</a>
+                <a class="collapse-item" href="<?= base_url('admin/pengaduan/umum') ?>">Umum</a>
+                <a class="collapse-item" href="<?= base_url('admin/pengaduan/covid') ?>">Covid-19</a>
             </div>
         </div>
     </li>
@@ -52,8 +52,8 @@
         </a>
         <div id="menu_3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="<?= base_url('admin/potensi/statistik') ?>">Tipe B</a>
-                <a class="collapse-item" href="<?= base_url('admin/potensi/harga') ?>">Tipe C</a>
+                <a class="collapse-item" href="<?= base_url('admin/laporan/tipeb') ?>">Tipe B</a>
+                <a class="collapse-item" href="<?= base_url('admin/laporan/tipec') ?>">Tipe C</a>
             </div>
         </div>
     </li>
@@ -74,7 +74,7 @@
         <div id="menu_4" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="<?= base_url('admin/pengaturan/halamanweb') ?>">Halaman Web</a>
-                <a class="collapse-item" href="<?= base_url('admin/pengaturan/halamanweb') ?>">Logo & Sosmed</a>
+                <a class="collapse-item" href="<?= base_url('admin/pengaturan/logo-sosmed') ?>">Logo & Sosmed</a>
                 <a class="collapse-item" href="<?= base_url('admin/pengaturan/gambarslider') ?>">Gambar Slider</a>
             </div>
         </div>

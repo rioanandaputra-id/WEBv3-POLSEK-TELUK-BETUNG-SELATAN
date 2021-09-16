@@ -6,19 +6,19 @@
                     <div class="row mb-3">
                         <div class="col">
                             <div class="float-left">
-                                <h1 class="h5 text-gray-800">MENU INFORMASI BURONAN</h1>
+                                <h1 class="h5 text-gray-800">MENU PENGADUAN <?= strtoupper($this->uri->segment(3)); ?></h1>
                             </div>
                             <div class="float-right">
-                                <a href="<?= base_url('admin/informasi/buronan/tambah'); ?>" class="btn btn-sm btn-primary">TAMBAH <i class="fas fa-plus-circle"></i></a>
-                                <button class="btn btn-sm btn-danger" onclick="select_delete()">HAPUS <i class="fas fa-trash-alt"></i></button>
-                                <button class="btn btn-sm btn-info" onclick="select_publish(0)">ARSIPKAN <i class="fas fa-times-circle"></i></button>
-                                <button class="btn btn-sm btn-success" onclick="select_publish(1)">PUBLIKASIKAN <i class="fas fa-check-circle"></i></button>
+                                <!-- <button class="btn btn-sm btn-danger" onclick="btn_delte()">HAPUS PENGADUAN <i class="fas fa-trash-alt"></i></button> -->
                             </div>
                         </div>
                     </div>
-                    <select id="publish" class="form-control">
-                        <option value="1">== DIPUBLIKASIKAN ==</option>
-                        <option value="0">== DIARSIPKAN ==</option>
+                    <select id="STATUS" class="form-control">
+                        <option value="DITERIMA">==BELUM DITANGGAPI==</option>
+                        <option value="DIPERIKSA">SEDANG DIPERIKSA</option>
+                        <option value="DITANGANI">SEDANG DITANGANI</option>
+                        <option value="SELESAI">ADUAN SELESAI</option>
+                        <option value="DITOLAK">ADUAN DITOLAK</option>
                     </select>
                 </div>
                 <div class="card-body">
@@ -26,10 +26,9 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th></th>
-                                <th>Foto</th>
-                                <th>Buronan</th>
-                                <th>Kasus</th>
-                                <th class="none">Keterangan</th>
+                                <th>Nama</th>
+                                <th>Kontak</th>
+                                <th>Perihal</th>
                                 <th class="desktop">Aksi</th>
                             </tr>
                         </thead>
@@ -52,7 +51,7 @@
 <script type="text/javascript">
     var table;
     $(document).ready(function() {
-        $('#publish').on('change', function() {
+        $('#STATUS').on('change', function() {
             table.ajax.reload();
         });
         table = $('#dataTable').DataTable({
@@ -76,12 +75,13 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?php echo site_url('admin/buronan_ajax/'); ?>",
+                "url": "<?php echo site_url('admin/pengaduan_ajax/'); ?>",
                 "type": "POST",
                 "data": {
-                    "publish": function() {
-                        return $('#publish').val()
-                    }
+                    "STATUS": function() {
+                        return $('#STATUS').val()
+                    },
+                    "JENIS_ADUAN": "<?= $this->uri->segment(3); ?>",
                 }
             },
             'columnDefs': [{
@@ -92,7 +92,7 @@
                     }
                 },
                 {
-                    "targets": [1, 3, 5],
+                    "targets": [4],
                     "orderable": false
                 }
             ],
@@ -109,21 +109,11 @@
         $.each(rows_selected, function(index, rowId) {
             data.push(rowId);
         });
-        delete_informasi(data);
+        btn_delete(data);
         data = [];
     }
 
-    function select_publish(type) {
-        var rows_selected = table.column(0).checkboxes.selected();
-        var data = [];
-        $.each(rows_selected, function(index, rowId) {
-            data.push(rowId);
-        });
-        publish_informasi(type, data);
-        data = [];
-    }
-
-    function delete_informasi(data) {
+    function btn_delete(data) {
         Swal.fire({
             title: 'Apa kamu yakin?',
             icon: 'warning',
@@ -136,7 +126,7 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "POST",
-                    url: "<?= base_url('admin/buronan_delete/') ?>",
+                    url: "<?= base_url('admin/pengaduan_delete/') ?>",
                     data: {
                         data: data
                     },
@@ -166,57 +156,5 @@
                 });
             }
         })
-    }
-
-    function publish_informasi(type, data) {
-        var text;
-        if (type == 1) {
-            text = "Publikasikan";
-        } else {
-            text = "Arsipkan";
-        }
-        Swal.fire({
-            title: 'Apa kamu yakin?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya! ' + text,
-            cancelButtonText: 'Tidak! Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $.ajax({
-                    type: "POST",
-                    url: "<?= base_url('admin/buronan_publish/') ?>",
-                    data: {
-                        publish: type,
-                        id: data
-                    },
-                    dataType: "JSON",
-                    success: function(data) {
-                        if (data == true) {
-                            Swal.fire(
-                                'Berhasil!',
-                                text + ' Data',
-                                'success'
-                            )
-                            table.ajax.reload();
-                        }
-                        if (data == false) {
-                            Swal.fire(
-                                'Pilih data terlebih dulu!',
-                                'Untuk ' + text + ' Data',
-                                'error'
-                            )
-                            table.ajax.reload();
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        var err = eval("(" + xhr.responseText + ")");
-                        alert(err.Message);
-                    }
-                });
-            }
-        });
     }
 </script>

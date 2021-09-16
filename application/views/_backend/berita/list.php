@@ -23,7 +23,7 @@
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                        <thead class="thead-dark">
                             <tr>
                                 <th></th>
                                 <th style="max-width: 65px;">Gambar</th>

@@ -29,3 +29,13 @@ $route['admin/informasi/tahanan/ubah/(:num)'] = 'admin/tahanan_edit/$1';
 $route['admin/informasi/buronan'] = 'admin/buronan';
 $route['admin/informasi/buronan/tambah'] = 'admin/buronan_add';
 $route['admin/informasi/buronan/ubah/(:num)'] = 'admin/buronan_edit/$1';
+
+$route['admin/pengaduan/umum'] = 'admin/pengaduan/umum';
+$route['admin/pengaduan/umum/respon/(:num)'] = 'admin/pengaduan_respon/$1';
+
+$route['admin/pengaduan/covid'] = 'admin/pengaduan/covid-19';
+$route['admin/pengaduan/covid/respon/(:num)'] = 'admin/pengaduan_respon/$1';
+
+
+$route['admin/laporan/tipec'] = 'admin/tipec';
+$route['admin/laporan/tipec/detail/(:any)'] = 'admin/tipec_detail/$1';

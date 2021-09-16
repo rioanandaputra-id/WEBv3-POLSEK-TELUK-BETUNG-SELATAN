@@ -193,6 +193,10 @@
     }
 
     function show_modal() {
+        $('#btn_unggah_img').prop('disabled', false);
+        $('#btn_unggah_doc').prop('disabled', false);
+        $('#btn_unggah_img').html('Insert Image');
+        $('#btn_unggah_doc').html('Insert Document');
         $('#hd').show();
         $('#btn_unggah_doc').hide();
         $('#btn_unggah_img').show();
@@ -215,6 +219,10 @@
     }
 
     function btn_unggah_img() {
+        $('#btn_unggah_img').html('<i class="fa fa-spinner fa-spin fa-fw"></i> Uploading Image..');
+        $('#btn_unggah_doc').html('<i class="fa fa-spinner fa-spin fa-fw"></i> Uploading Document..');
+        $('#btn_unggah_img').prop('disabled', true);
+        $('#btn_unggah_doc').prop('disabled', true);
         if ($('#tipe_thumbnail').val() === 'unggah') {
             deleteImage('<?= base_url('assets/upload/berita/') ?>' + $('#path').val() + '/' + $('#url_thumbnail').val());
         }

@@ -6,7 +6,7 @@
                     <div class="row mb-3">
                         <div class="col">
                             <div class="float-left">
-                                <h1 class="h5 text-gray-800">MENU NOMOR DARURAT</h1>
+                                <h1 class="h5 text-gray-800">MENU INFORMASI NOMOR DARURAT</h1>
                             </div>
                             <div class="float-right">
                                 <button class="btn btn-sm btn-primary" onclick="modal_save()">TAMBAH <i class="fas fa-plus-circle"></i></button>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                        <thead class="thead-dark">
                             <tr>
                                 <th></th>
                                 <th>Instansi</th>

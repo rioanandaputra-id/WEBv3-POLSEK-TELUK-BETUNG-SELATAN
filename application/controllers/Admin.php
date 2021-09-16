@@ -39,7 +39,7 @@ class Admin extends BaseController
             $row[] = '<img height="50px" src="' . $retVal . '"/>';
             $row[] = $field->JUDUL . '<br> (<code>' . $field->DILIHAT . 'x dilihat</code>)';
             $row[] = '<strong>' . $field->USERNAME . '</strong><br>' . $field->CREATE_AT;
-            $button_view = '<a class="btn btn-sm btn-primary" href="' . base_url('informasi/berita/detail/') . $field->ID_BERITA . '" target="_BLANK"><i class="fas fa-eye"></i></a>';
+            // $button_view = '<a class="btn btn-sm btn-primary" href="' . base_url('informasi/berita/detail/') . $field->ID_BERITA . '" target="_BLANK"><i class="fas fa-eye"></i></a>';
             $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_BERITA . ')"><i class="fas fa-trash-alt text-white"></i></button>';
             $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/berita/ubah') . $this->input->get_post("id_info") . "/" . $field->ID_BERITA . '"><i class="fas fa-edit text-white"></i></a>';
             if ($field->PUBLISH == 1) {
@@ -47,7 +47,7 @@ class Admin extends BaseController
             } else {
                 $button_publish = '<button class="btn btn-sm btn-success" onclick="publish_informasi(' . "1," .  $field->ID_BERITA . ')"><i class="fas fa-check-circle"></i></button>';
             }
-            $row[] = '<div class="btn-group btn-group-toggle">' . $button_view . $button_update . $button_delete . $button_publish . '</div>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_delete . $button_publish . '</div>';
             $data[] = $row;
         }
         $output = array(
@@ -710,7 +710,12 @@ class Admin extends BaseController
             $row = array();
             $row[] = $field->ID_NOMOR;
             $row[] = $field->INSTANSI;
-            $row[] = '<div class="d-grid gap-2 d-md-block"><a target="_BLANK" href="tel:' . $field->TLP . '" class="btn btn-sm btn-warning"><i class="fa fa-phone"></i> ' . $field->TLP . '</a> <a target="_BLANK" href="https://wa.me/' . $field->WA . '" class="btn btn-sm btn-success"><i class="fab fa-whatsapp"></i> ' . $field->WA . '</a></div>';
+            if ($field->WA != '') {
+                $btn_wa = '<a target="_BLANK" href="https://wa.me/' . $field->WA . '" class="btn btn-sm btn-success"><i class="fab fa-whatsapp"></i> ' . $field->WA . '</a>';
+            } else {
+                $btn_wa = '';
+            }
+            $row[] = '<div class="d-grid gap-2 d-md-block"><a target="_BLANK" href="tel:' . $field->TLP . '" class="btn btn-sm btn-warning"> <i class="fa fa-phone"></i> ' . $field->TLP . '</a> ' . $btn_wa . '</div>';
             $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_NOMOR . ')"><i class="fas fa-trash-alt text-white"></i></button>';
             $button_update = '<button class="btn btn-sm btn-warning" onclick="modal_update(' . $field->ID_NOMOR . ')"><i class="fas fa-edit text-white"></i></button>';
             if ($field->PUBLISH == 1) {
@@ -1500,18 +1505,18 @@ class Admin extends BaseController
         if (isset($data)) {
             if (is_array($data)) {
                 foreach ($data as $key) {
-                    $folder = $this->buronan->get($key);
+                    $folder = $this->tahanan->get($key);
                     if (file_exists($path . $folder[0]->FOTO)) {
                         unlink($path . $folder[0]->FOTO);
                     }
                 }
             } else {
-                $folder = $this->buronan->get($data);
+                $folder = $this->tahanan->get($data);
                 if (file_exists($path . $folder[0]->FOTO)) {
                     unlink($path . $folder[0]->FOTO);
                 }
             }
-            $query = $this->buronan->delete($data);
+            $query = $this->tahanan->delete($data);
             echo json_encode($query);
         } else {
             echo json_encode(false);
@@ -1801,7 +1806,7 @@ class Admin extends BaseController
         foreach ($list as $field) {
             $row = array();
             $row[] = $field->ID_BURONAN;
-            $gambar = ($field->TIPE_FOTO == 'url') ? $field->FOTO : base_url('assets/upload/orang/') . $field->FOTO;
+            $gambar = ($field->TIPE_FOTO == 'url') ? $field->FOTO : base_url('assets/upload/buronan/') . $field->FOTO;
             $row[] = '<img height="80px" src="' . $gambar . '"/>';
             $row[] = $field->NAMA . '<br>' . $field->TMP_LAHIR . ', ' . $field->TGL_LAHIR;
             $row[] = $field->KASUS . '<br>' . $field->CREATE_AT;
@@ -2090,27 +2095,95 @@ class Admin extends BaseController
         }
     }
 
+    public function pengaduan($id)
+    {
+        $this->global = ['pageTitle' => 'Menu Pengaduan ' . ucfirst($id), 'menuPage' => 3];
+        $this->LvBackend('_backend/pengaduan/list', $this->global, NULL, NULL, NULL);
+    }
+    public function pengaduan_respon($id)
+    {
+        $this->load->model('backend/Pengaduan_model', 'pengaduan');
+        $data['pengaduan'] = $this->pengaduan->get($id);
+        $this->global = ['pageTitle' => 'Menu Respon Pengaduan Umum ID ' . $id, 'menuPage' => 3];
+        $this->LvBackend('_backend/pengaduan/respon', $this->global, NULL, $data, NULL);
+    }
+    public function pengaduan_ajax()
+    {
+        $this->load->model('serverside/Pengaduan_ds_model', 'ds_pengaduan');
+        $list = $this->ds_pengaduan->get_datatables();
+        $data = array();
+        foreach ($list as $field) {
+            $row = array();
+            $row[] = $field->ID_PENGADUAN;
+            $row[] = $field->NIK . ',<br>' . $field->NAMA . ',<br>' . $field->JENKEL;
+            $row[] = $field->TLP . '<br>' . $field->EMAIL;
+            $row[] = $field->PERIHAL . ',<br>' . $field->CREATE_AT;
+            $btn_delete = '<button class="btn btn-sm btn-danger" title="Hapus" onclick="btn_delete(' . $field->ID_PENGADUAN  . ')"><i class="fas fa-trash-alt text-white"></i></button>';
+            $btn_respon = '<a class="btn btn-sm btn-success" title="Respon" href="' . base_url('admin/pengaduan/' . $field->JENIS_ADUAN . '/respon/') . $field->ID_PENGADUAN  . '"><i class="fas fa-reply"></i></a>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $btn_respon . $btn_delete .  '</div>';
+            $data[] = $row;
+        }
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->ds_pengaduan->count_all(),
+            "recordsFiltered" => $this->ds_pengaduan->count_filtered(),
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function pengaduan_delete()
+    {
+        $this->load->model('backend/Pengaduan_model', 'pengaduan');
+        $data = $this->input->post('data');
+        $query = $this->pumum->delete($data);
+        echo json_encode($query);
+    }
+    public function kotakmasuk()
+    {
+        $this->load->view("_backend/email/login");
+    }
 
-
-
-
-
-
-
-
-
-
-
-    // RECORD ACTIVITY USERS
-    // public function record_user_activity($subjek, $predikat, $objek, $keterangan)
-    // {
-    //     $data = array(
-    //         'subjek' => $subjek,
-    //         'predikat' => $predikat,
-    //         'objek' => $objek,
-    //         'keterangan' => $keterangan,
-    //         'ip_address' => $this->input->ip_address()
-    //     );
-    //     $this->admin->save('tbl_aktivitas', $data);
-    // }
+    function tipec()
+    {
+        $this->global = ['pageTitle' => 'Menu Laporan Tipe C', 'menuPage' => 4];
+        $this->LvBackend('_backend/tipe-c/list', $this->global, NULL, NULL, NULL);
+    }
+    public function tipec_ajax()
+    {
+        $this->load->model('serverside/Tipec_ds_model', 'ds_tipec');
+        $list = $this->ds_tipec->get_datatables();
+        $data = array();
+        foreach ($list as $field) {
+            $row = array();
+            $row[] = $field->ID_TIPEC;
+            $row[] = $field->NIK . ' |<br>' . $field->NAMA . ' |<br>' . $field->JENKEL;
+            $row[] = $field->NO_TLPN . ' |<br>' . $field->EMAIL;
+            $row[] = $field->ALAMAT . ' |<br>dibuat pada ' . $field->CREATE_AT;
+            $btn_delete = '<button class="btn btn-sm btn-danger" title="Hapus" onclick="btn_delete(' . $field->ID_TIPEC  . ')"><i class="fas fa-trash-alt text-white"></i></button>';
+            $btn_view = '<a class="btn btn-sm btn-primary" title="Lihat" href="' . base_url('admin/laporan/tipec/detail/') . $field->ID_TIPEC  . '"><i class="fas fa-eye"></i></a>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $btn_view . $btn_delete .  '</div>';
+            $data[] = $row;
+        }
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->ds_tipec->count_all(),
+            "recordsFiltered" => $this->ds_tipec->count_filtered(),
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function tipec_detail($id)
+    {
+        $this->load->model('backend/Tipec_model', 'tipec');
+        $data['tipec'] = $this->tipec->get($id);
+        $this->global = ['pageTitle' => 'Menu Lihat Laporan Tipe C', 'menuPage' => 4];
+        $this->LvBackend('_backend/tipe-c/detail', $this->global, NULL, $data, NULL);
+    }
+    public function tipec_delete()
+    {
+        $this->load->model('backend/Tipec_model', 'tipec');
+        $data = $this->input->post('data');
+        $query = $this->tipec->delete($data);
+        echo json_encode($query);
+    }
 }
