@@ -40,14 +40,14 @@ class Admin extends BaseController
             $row[] = $field->JUDUL . '<br> (<code>' . $field->DILIHAT . 'x dilihat</code>)';
             $row[] = '<strong>' . $field->USERNAME . '</strong><br>' . $field->CREATE_AT;
             // $button_view = '<a class="btn btn-sm btn-primary" href="' . base_url('informasi/berita/detail/') . $field->ID_BERITA . '" target="_BLANK"><i class="fas fa-eye"></i></a>';
-            $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_BERITA . ')"><i class="fas fa-trash-alt text-white"></i></button>';
+            // $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_BERITA . ')"><i class="fas fa-trash-alt text-white"></i></button>';
             $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/berita/ubah') . $this->input->get_post("id_info") . "/" . $field->ID_BERITA . '"><i class="fas fa-edit text-white"></i></a>';
             if ($field->PUBLISH == 1) {
                 $button_publish = '<button class="btn btn-sm btn-info" onclick="publish_informasi(' . "0," . $field->ID_BERITA . ')"><i class="fas fa-times-circle"></i></button>';
             } else {
                 $button_publish = '<button class="btn btn-sm btn-success" onclick="publish_informasi(' . "1," .  $field->ID_BERITA . ')"><i class="fas fa-check-circle"></i></button>';
             }
-            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_delete . $button_publish . '</div>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_publish . '</div>';
             $data[] = $row;
         }
         $output = array(
@@ -337,14 +337,14 @@ class Admin extends BaseController
             $row[] = '<strong>' . $field->NAMA_BHABIN . '</strong><br>' . '<div class="d-grid gap-2 d-md-block"><a target="_BLANK" href="tel:' . $field->TLP_BHABIN . '" class="btn btn-sm btn-warning"><i class="fa fa-phone"></i> ' . $field->TLP_BHABIN . '</a> <a target="_BLANK" href="https://wa.me/' . $field->WA_BHABIN . '" class="btn btn-sm btn-success"><i class="fab fa-whatsapp"></i> ' . $field->WA_BHABIN . '</a></div>' . $field->KECAMATAN . '<br>' . $field->KELURAHAN;
             $row[] = '<img height="80px" src="' . $gambar2 . '"/>';
             $row[] = '<strong>' . $field->NAMA_KRINGSERSE . '</strong><br>' . '<div class="d-grid gap-2 d-md-block"><a target="_BLANK" href="tel:' . $field->TLP_KRINGSERSE . '" class="btn btn-sm btn-warning"><i class="fa fa-phone"></i> ' . $field->TLP_KRINGSERSE . '</a> <a target="_BLANK" href="https://wa.me/' . $field->WA_KRINGSERSE . '" class="btn btn-sm btn-success"><i class="fab fa-whatsapp"></i> ' . $field->WA_KRINGSERSE . '</a></div>' . $field->KECAMATAN . '<br>' . $field->KELURAHAN;
-            $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_BHABIN . ')"><i class="fas fa-trash-alt text-white"></i></button>';
+            // $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_BHABIN . ')"><i class="fas fa-trash-alt text-white"></i></button>';
             $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/bhabin/ubah/') . $field->ID_BHABIN . '"><i class="fas fa-edit text-white"></i></a>';
             if ($field->PUBLISH == 1) {
                 $button_publish = '<button class="btn btn-sm btn-info" onclick="publish_informasi(' . "0," . $field->ID_BHABIN . ')"><i class="fas fa-times-circle"></i></button>';
             } else {
                 $button_publish = '<button class="btn btn-sm btn-success" onclick="publish_informasi(' . "1," .  $field->ID_BHABIN . ')"><i class="fas fa-check-circle"></i></button>';
             }
-            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_delete . $button_publish . '</div>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_publish . '</div>';
             $data[] = $row;
         }
         $output = array(
@@ -716,14 +716,14 @@ class Admin extends BaseController
                 $btn_wa = '';
             }
             $row[] = '<div class="d-grid gap-2 d-md-block"><a target="_BLANK" href="tel:' . $field->TLP . '" class="btn btn-sm btn-warning"> <i class="fa fa-phone"></i> ' . $field->TLP . '</a> ' . $btn_wa . '</div>';
-            $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_NOMOR . ')"><i class="fas fa-trash-alt text-white"></i></button>';
+            // $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_NOMOR . ')"><i class="fas fa-trash-alt text-white"></i></button>';
             $button_update = '<button class="btn btn-sm btn-warning" onclick="modal_update(' . $field->ID_NOMOR . ')"><i class="fas fa-edit text-white"></i></button>';
             if ($field->PUBLISH == 1) {
                 $button_publish = '<button class="btn btn-sm btn-info" onclick="publish_informasi(' . "0," . $field->ID_NOMOR . ')"><i class="fas fa-times-circle"></i></button>';
             } else {
                 $button_publish = '<button class="btn btn-sm btn-success" onclick="publish_informasi(' . "1," .  $field->ID_NOMOR . ')"><i class="fas fa-check-circle"></i></button>';
             }
-            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_delete . $button_publish . '</div>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_publish . '</div>';
             $data[] = $row;
         }
         $output = array(
@@ -905,14 +905,14 @@ class Admin extends BaseController
             $row[] = $field->BARANG;
             $row[] = $field->LOKASI . '<br>' . $field->CREATE_AT;
             $row[] = $field->KETERANGAN;
-            $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_BARANG . ')"><i class="fas fa-trash-alt text-white"></i></button>';
+            // $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_BARANG . ')"><i class="fas fa-trash-alt text-white"></i></button>';
             $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/barang/ubah/') . $field->ID_BARANG . '"><i class="fas fa-edit text-white"></i></a>';
             if ($field->PUBLISH == 1) {
                 $button_publish = '<button class="btn btn-sm btn-info" onclick="publish_informasi(' . "0," . $field->ID_BARANG . ')"><i class="fas fa-times-circle"></i></button>';
             } else {
                 $button_publish = '<button class="btn btn-sm btn-success" onclick="publish_informasi(' . "1," .  $field->ID_BARANG . ')"><i class="fas fa-check-circle"></i></button>';
             }
-            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_delete . $button_publish . '</div>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update  . $button_publish . '</div>';
             $data[] = $row;
         }
         $output = array(
@@ -1183,14 +1183,14 @@ class Admin extends BaseController
             $row[] = $field->NAMA . '<br>' . $field->TMP_LAHIR . ', ' . $field->TGL_LAHIR;
             $row[] = $field->CREATE_AT;
             $row[] = $field->KETERANGAN;
-            $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_ORANG . ')"><i class="fas fa-trash-alt text-white"></i></button>';
+            // $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_ORANG . ')"><i class="fas fa-trash-alt text-white"></i></button>';
             $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/orang/ubah/') . $field->ID_ORANG . '"><i class="fas fa-edit text-white"></i></a>';
             if ($field->PUBLISH == 1) {
                 $button_publish = '<button class="btn btn-sm btn-info" onclick="publish_informasi(' . "0," . $field->ID_ORANG . ')"><i class="fas fa-times-circle"></i></button>';
             } else {
                 $button_publish = '<button class="btn btn-sm btn-success" onclick="publish_informasi(' . "1," .  $field->ID_ORANG . ')"><i class="fas fa-check-circle"></i></button>';
             }
-            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_delete . $button_publish . '</div>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_publish . '</div>';
             $data[] = $row;
         }
         $output = array(
@@ -1479,14 +1479,14 @@ class Admin extends BaseController
             $row[] = $field->NAMA . '<br>' . $field->TMP_LAHIR . ', ' . $field->TGL_LAHIR;
             $row[] = $field->KASUS . '<br>' . $field->CREATE_AT . '<br>' . $field->KESATUAN;
             $row[] = $field->KETERANGAN;
-            $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_TAHANAN   . ')"><i class="fas fa-trash-alt text-white"></i></button>';
+            // $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_TAHANAN   . ')"><i class="fas fa-trash-alt text-white"></i></button>';
             $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/tahanan/ubah/') . $field->ID_TAHANAN  . '"><i class="fas fa-edit text-white"></i></a>';
             if ($field->PUBLISH == 1) {
                 $button_publish = '<button class="btn btn-sm btn-info" onclick="publish_informasi(' . "0," . $field->ID_TAHANAN  . ')"><i class="fas fa-times-circle"></i></button>';
             } else {
                 $button_publish = '<button class="btn btn-sm btn-success" onclick="publish_informasi(' . "1," .  $field->ID_TAHANAN  . ')"><i class="fas fa-check-circle"></i></button>';
             }
-            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_delete . $button_publish . '</div>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_publish . '</div>';
             $data[] = $row;
         }
         $output = array(
@@ -1811,14 +1811,14 @@ class Admin extends BaseController
             $row[] = $field->NAMA . '<br>' . $field->TMP_LAHIR . ', ' . $field->TGL_LAHIR;
             $row[] = $field->KASUS . '<br>' . $field->CREATE_AT;
             $row[] = $field->KETERANGAN;
-            $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_BURONAN  . ')"><i class="fas fa-trash-alt text-white"></i></button>';
+            // $button_delete = '<button class="btn btn-sm btn-danger" onclick="delete_informasi(' . $field->ID_BURONAN  . ')"><i class="fas fa-trash-alt text-white"></i></button>';
             $button_update = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/informasi/buronan/ubah/') . $field->ID_BURONAN  . '"><i class="fas fa-edit text-white"></i></a>';
             if ($field->PUBLISH == 1) {
                 $button_publish = '<button class="btn btn-sm btn-info" onclick="publish_informasi(' . "0," . $field->ID_BURONAN  . ')"><i class="fas fa-times-circle"></i></button>';
             } else {
                 $button_publish = '<button class="btn btn-sm btn-success" onclick="publish_informasi(' . "1," .  $field->ID_BURONAN  . ')"><i class="fas fa-check-circle"></i></button>';
             }
-            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update . $button_delete . $button_publish . '</div>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $button_update .  $button_publish . '</div>';
             $data[] = $row;
         }
         $output = array(
@@ -2118,9 +2118,9 @@ class Admin extends BaseController
             $row[] = $field->NIK . ',<br>' . $field->NAMA . ',<br>' . $field->JENKEL;
             $row[] = $field->TLP . '<br>' . $field->EMAIL;
             $row[] = $field->PERIHAL . ',<br>' . $field->CREATE_AT;
-            $btn_delete = '<button class="btn btn-sm btn-danger" title="Hapus" onclick="btn_delete(' . $field->ID_PENGADUAN  . ')"><i class="fas fa-trash-alt text-white"></i></button>';
+            // $btn_delete = '<button class="btn btn-sm btn-danger" title="Hapus" onclick="btn_delete(' . $field->ID_PENGADUAN  . ')"><i class="fas fa-trash-alt text-white"></i></button>';
             $btn_respon = '<a class="btn btn-sm btn-success" title="Respon" href="' . base_url('admin/pengaduan/' . $field->JENIS_ADUAN . '/respon/') . $field->ID_PENGADUAN  . '"><i class="fas fa-reply"></i></a>';
-            $row[] = '<div class="btn-group btn-group-toggle">' . $btn_respon . $btn_delete .  '</div>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $btn_respon .  '</div>';
             $data[] = $row;
         }
         $output = array(
@@ -2159,9 +2159,9 @@ class Admin extends BaseController
             $row[] = $field->NIK . ' |<br>' . $field->NAMA . ' |<br>' . $field->JENKEL;
             $row[] = $field->NO_TLPN . ' |<br>' . $field->EMAIL;
             $row[] = $field->ALAMAT . ' |<br>dibuat pada ' . $field->CREATE_AT;
-            $btn_delete = '<button class="btn btn-sm btn-danger" title="Hapus" onclick="btn_delete(' . $field->ID_TIPEC  . ')"><i class="fas fa-trash-alt text-white"></i></button>';
+            // $btn_delete = '<button class="btn btn-sm btn-danger" title="Hapus" onclick="btn_delete(' . $field->ID_TIPEC  . ')"><i class="fas fa-trash-alt text-white"></i></button>';
             $btn_view = '<a class="btn btn-sm btn-primary" title="Lihat" href="' . base_url('admin/laporan/tipec/detail/') . $field->ID_TIPEC  . '"><i class="fas fa-eye"></i></a>';
-            $row[] = '<div class="btn-group btn-group-toggle">' . $btn_view . $btn_delete .  '</div>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $btn_view .  '</div>';
             $data[] = $row;
         }
         $output = array(
@@ -2182,6 +2182,47 @@ class Admin extends BaseController
     public function tipec_delete()
     {
         $this->load->model('backend/Tipec_model', 'tipec');
+        $data = $this->input->post('data');
+        $query = $this->tipec->delete($data);
+        echo json_encode($query);
+    }
+
+    function tipeb()
+    {
+        $this->global = ['pageTitle' => 'Menu Laporan Tipe B', 'menuPage' => 4];
+        $this->LvBackend('_backend/tipe-b/list', $this->global, NULL, NULL, NULL);
+    }
+    function tipeb_add()
+    {
+        $this->global = ['pageTitle' => 'Menu Tambah Laporan Tipe B', 'menuPage' => 4];
+        $this->LvBackend('_backend/tipe-b/add', $this->global, NULL, NULL, NULL);
+    }
+    public function tipeb_ajax()
+    {
+        $this->load->model('serverside/Tipeb_ds_model', 'ds_tipeb');
+        $list = $this->ds_tipeb->get_datatables();
+        $data = array();
+        foreach ($list as $field) {
+            $row = array();
+            $row[] = $field->ID_TIPEC;
+            $row[] = $field->NIK . ' |<br>' . $field->NAMA . ' |<br>' . $field->JENKEL;
+            $row[] = $field->NO_TLPN . ' |<br>' . $field->EMAIL;
+            $row[] = $field->ALAMAT . ' |<br>dibuat pada ' . $field->CREATE_AT;
+            $btn_view = '<a class="btn btn-sm btn-primary" title="Lihat" href="' . base_url('admin/laporan/tipec/detail/') . $field->ID_TIPEC  . '"><i class="fas fa-eye"></i></a>';
+            $row[] = '<div class="btn-group btn-group-toggle">' . $btn_view .  '</div>';
+            $data[] = $row;
+        }
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->ds_tipeb->count_all(),
+            "recordsFiltered" => $this->ds_tipeb->count_filtered(),
+            "data" => $data,
+        );
+        echo json_encode($output);
+    }
+    public function tipeb_delete()
+    {
+        $this->load->model('backend/Tipeb_model', 'tipeb');
         $data = $this->input->post('data');
         $query = $this->tipec->delete($data);
         echo json_encode($query);

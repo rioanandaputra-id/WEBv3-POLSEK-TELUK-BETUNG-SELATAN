@@ -9,11 +9,11 @@
                                 <h1 class="h5 text-gray-800">MENU LAPORAN TIPE C</h1>
                             </div>
                             <div class="float-right">
-                                <button class="btn btn-sm btn-danger" onclick="select_delete()">HAPUS <i class="fas fa-trash-alt"></i></button>
                                 <form action="<?= base_url('doc/tipec'); ?>" method="post" target="_blank" id="printdong">
-                                    <input type="text" name="id" id="printid">
+                                    <input type="hidden" name="id" id="printid">
                                 </form>
-                                <button class="btn btn-primary" onclick="select_print()"><strong>Print Laporan</strong> <i class="fas fa-print"></i></button>
+                                <button class="btn btn-sm btn-danger" onclick="select_delete()">HAPUS <i class="fas fa-trash-alt"></i></button>
+                                <button class="btn btn-sm btn-primary" onclick="select_print()"><strong>PRINT</strong> <i class="fas fa-print"></i></button>
                             </div>
                         </div>
                     </div>
@@ -114,14 +114,26 @@
     }
 
     function select_print() {
-        var rows_selected = table.column(0).checkboxes.selected();
-        var data = [];
-        $.each(rows_selected, function(index, rowId) {
-            data.push(rowId);
-        });
-        $('#printid').val(data);
-        data = [];
-        $("#printdong").submit();
+        Swal.fire({
+            title: 'Apa kamu yakin?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, print!',
+            cancelButtonText: 'Tidak, batal!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var rows_selected = table.column(0).checkboxes.selected();
+                var data = [];
+                $.each(rows_selected, function(index, rowId) {
+                    data.push(rowId);
+                });
+                $('#printid').val(data);
+                data = [];
+                $("#printdong").submit();
+            }
+        })
     }
 
     function delete_tipec(data) {

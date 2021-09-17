@@ -69,7 +69,7 @@
     </style>
 </head>
 
-<body style="margin-left: 5%; margin-right:15%;">
+<body onload="window.print()" style="margin-left: 5%; margin-right:15%;">
     <?php foreach ($tipec as $record) : ?>
         <div class="book">
             <div class="page">
