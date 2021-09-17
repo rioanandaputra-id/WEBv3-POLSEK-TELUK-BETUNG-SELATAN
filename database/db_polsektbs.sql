@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Sep 2021 pada 21.22
+-- Waktu pembuatan: 17 Sep 2021 pada 19.59
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -39,6 +39,13 @@ CREATE TABLE `tbl_barang` (
   `PUBLISH` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `tbl_barang`
+--
+
+INSERT INTO `tbl_barang` (`ID_BARANG`, `TIPE_FOTO`, `FOTO`, `BARANG`, `LOKASI`, `KETERANGAN`, `CREATE_AT`, `UPDATE_AT`, `PUBLISH`) VALUES
+(9, 'unggah', 'Screenshot_2_(2).jpg', 'fvbcxbc', 'bcvbvcb', 'cvbcvb', '2021-09-17 15:05:00', '2021-09-17 07:05:50', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -64,7 +71,7 @@ CREATE TABLE `tbl_berita` (
 --
 
 INSERT INTO `tbl_berita` (`ID_BERITA`, `ID_PENGGUNA`, `JUDUL`, `ISI`, `PATH`, `TIPE_THUMBNAIL`, `URL_THUMBNAIL`, `CREATE_AT`, `UPDATE_AT`, `DILIHAT`, `PUBLISH`) VALUES
-(18, 1, 'Polresta Bandar Lampung Salurkan Bansos Untuk Masyarakat Terdampak Covid-19', '<p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Bandar Lampung, Kota Bandar Lampung masih memberlakukan Pembatasan Pembatasan Kegiatan Masyarakat (PPKM) Level 4 karena masih tingginya angka sebaran kasus Covid-19.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Untuk meringankan beban warga kecil terdampak Covid-19 dan pemberlakukan pembatasan tersebut, Polresta Bandar Lampung memberikan bantuan paket Sembako kepada perwakilan masyarakat yang terdamapak Covid-19 dan juga PPKM ini ataupun pelaku usaha kecil, Kamis (29/7).</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\"><img data-filename=\"WhatsApp Image 2021-07-29 at 10.23.21 (1).jpeg\" src=\"https://polrestabandarlampung.com/storage/uploads/berita/polres-berita_20210729_103324-6102218419491.png\" style=\"width: 427.5px;\"><br></p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Kapolresta Bandar Lampung Kombes Pol Yan Budi Jaya, S.IK., M.M., dalam sambutannya memberikan apresiasi kepada berbagai pihak yang turut berandil memberikan bantuan untuk meringankan beban masyarakat.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">\"Saya Berserta Jajaran Mengucapkan Terimakasih dan mengucapkan apresiasi dan rasa penghormatan yang besar karena membantu meringankan beban masyarakat yang terdampak dari PPKM Level 4,\" ungkapnya.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Dalam acara yang juga dihadiri Wakapolresta Bandar Lampung AKBP Ganda MH.Saragih, S.IK. seluruh Pejabat Utama Polresta dan Kapolsek Jajaran serta elemen perwakilan organisasi kemahasiswaan seperti&nbsp; HMI ,GMNI, PMKRI, IMM dan GMKI.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\"><img data-filename=\"WhatsApp Image 2021-07-29 at 10.23.21 (2).jpeg\" src=\"https://polrestabandarlampung.com/storage/uploads/berita/polres-berita_20210729_103324-610221841e9e3.png\" style=\"width: 427.5px;\"></p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\"><img data-filename=\"WhatsApp Image 2021-07-29 at 10.23.22 (1).jpeg\" src=\"https://polrestabandarlampung.com/storage/uploads/berita/polres-berita_20210729_103324-6102218431f68.png\" style=\"width: 427.5px;\"><br></p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Kapolresta menyampaikan, paket Sembako ini nantinya akan disalurkan oleh anggota Bhabinkamtibmas langsung kepada masyarakat yang memang benar-benar membutuhkan terutama yang terdampak langsung Covid-19 seperti anak yatim yang orang tuanya meninggal karena covid-19 ataupun masyarakat yang sedang terkena Covid-19 serta pelaku usaha kecil yang terdampak langsung PPKM di Kota Bandar Lampung.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Dalam kesempatan ini Polresta Menerima Bantuan dari Para Donator sejumlah 3000 Paket sembako yang isinya Beras, Mie instan, Biskuit kaleng, sarden, gula pasir dan Susu.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\"><img data-filename=\"WhatsApp Image 2021-07-29 at 10.23.20 (1).jpeg\" src=\"https://polrestabandarlampung.com/storage/uploads/berita/polres-berita_20210729_103324-6102218447a6d.png\" style=\"width: 427.5px;\"><br></p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\"><span style=\"font-size: 1rem;\">Kapolresta juga berpesan kepada perwakilan penerima bantuan sembako untuk tidak segan memberitahu atau meminta tolong kepada Polisi setempat bila membutuhkan bantuan dan pasti akan dibantu dan terakhir Kapolresta Berpesan kepada Masyarakat dan Seluruh Personil Untuk Tetap Patuh Terhadap Protokol Kesehatan dan Berani Menegur Orang Lain bila ada yang tidak mentaati Protokol kesehatan karena ini sebagai upaya kita memutus penyebaran covid-19.</span></p>', '1631573746613fd6f2b71b0', 'url', 'https://polrestabandarlampung.com/storage/uploads/berita/polres-berita_20210729_103323-61022183e8918.jpeg', '2021-09-14', '2021-09-13 22:56:43', 0, 1);
+(18, 1, 'Polresta Bandar Lampung Salurkan Bansos Untuk Masyarakat Terdampak Covid-19', '<p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Bandar Lampung, Kota Bandar Lampung masih memberlakukan Pembatasan Pembatasan Kegiatan Masyarakat (PPKM) Level 4 karena masih tingginya angka sebaran kasus Covid-19.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Untuk meringankan beban warga kecil terdampak Covid-19 dan pemberlakukan pembatasan tersebut, Polresta Bandar Lampung memberikan bantuan paket Sembako kepada perwakilan masyarakat yang terdamapak Covid-19 dan juga PPKM ini ataupun pelaku usaha kecil, Kamis (29/7).</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\"><img data-filename=\"WhatsApp Image 2021-07-29 at 10.23.21 (1).jpeg\" src=\"https://polrestabandarlampung.com/storage/uploads/berita/polres-berita_20210729_103324-6102218419491.png\" style=\"width: 427.5px;\"><br></p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Kapolresta Bandar Lampung Kombes Pol Yan Budi Jaya, S.IK., M.M., dalam sambutannya memberikan apresiasi kepada berbagai pihak yang turut berandil memberikan bantuan untuk meringankan beban masyarakat.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">\"Saya Berserta Jajaran Mengucapkan Terimakasih dan mengucapkan apresiasi dan rasa penghormatan yang besar karena membantu meringankan beban masyarakat yang terdampak dari PPKM Level 4,\" ungkapnya.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Dalam acara yang juga dihadiri Wakapolresta Bandar Lampung AKBP Ganda MH.Saragih, S.IK. seluruh Pejabat Utama Polresta dan Kapolsek Jajaran serta elemen perwakilan organisasi kemahasiswaan seperti&nbsp; HMI ,GMNI, PMKRI, IMM dan GMKI.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\"><img data-filename=\"WhatsApp Image 2021-07-29 at 10.23.21 (2).jpeg\" src=\"https://polrestabandarlampung.com/storage/uploads/berita/polres-berita_20210729_103324-610221841e9e3.png\" style=\"width: 427.5px;\"></p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\"><img data-filename=\"WhatsApp Image 2021-07-29 at 10.23.22 (1).jpeg\" src=\"https://polrestabandarlampung.com/storage/uploads/berita/polres-berita_20210729_103324-6102218431f68.png\" style=\"width: 427.5px;\"><br></p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Kapolresta menyampaikan, paket Sembako ini nantinya akan disalurkan oleh anggota Bhabinkamtibmas langsung kepada masyarakat yang memang benar-benar membutuhkan terutama yang terdampak langsung Covid-19 seperti anak yatim yang orang tuanya meninggal karena covid-19 ataupun masyarakat yang sedang terkena Covid-19 serta pelaku usaha kecil yang terdampak langsung PPKM di Kota Bandar Lampung.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\">Dalam kesempatan ini Polresta Menerima Bantuan dari Para Donator sejumlah 3000 Paket sembako yang isinya Beras, Mie instan, Biskuit kaleng, sarden, gula pasir dan Susu.</p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\"><img data-filename=\"WhatsApp Image 2021-07-29 at 10.23.20 (1).jpeg\" src=\"https://polrestabandarlampung.com/storage/uploads/berita/polres-berita_20210729_103324-6102218447a6d.png\" style=\"width: 427.5px;\"><br></p><p style=\"color: var(--p-color); font-size: var(--p-font-size); font-weight: var(--font-weight-light); line-height: 1.5em; font-family: Plain, sans-serif;\"><span style=\"font-size: 1rem;\">Kapolresta juga berpesan kepada perwakilan penerima bantuan sembako untuk tidak segan memberitahu atau meminta tolong kepada Polisi setempat bila membutuhkan bantuan dan pasti akan dibantu dan terakhir Kapolresta Berpesan kepada Masyarakat dan Seluruh Personil Untuk Tetap Patuh Terhadap Protokol Kesehatan dan Berani Menegur Orang Lain bila ada yang tidak mentaati Protokol kesehatan karena ini sebagai upaya kita memutus penyebaran covid-19.</span></p>', '1631573746613fd6f2b71b0', 'url', 'https://polrestabandarlampung.com/storage/uploads/berita/polres-berita_20210729_103323-61022183e8918.jpeg', '2021-09-14', '2021-09-17 07:03:38', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -95,7 +102,7 @@ CREATE TABLE `tbl_bhabin` (
 --
 
 INSERT INTO `tbl_bhabin` (`ID_BHABIN`, `NAMA_BHABIN`, `TIPE_FOTO_BHABIN`, `FOTO_BHABIN`, `WA_BHABIN`, `TLP_BHABIN`, `NAMA_KRINGSERSE`, `TIPE_FOTO_KRINGSERSE`, `FOTO_KRINGSERSE`, `WA_KRINGSERSE`, `TLP_KRINGSERSE`, `ID_KELURAHAN`, `CREATE_AT`, `UPDATE_AT`, `PUBLISH`) VALUES
-(9, 'Doni Sandi', 'unggah', 'yt02.jpg', '62346346346', '6243634643', 'Sulis Tiawati', 'unggah', 'yt01.jpg', '62346765756', '6234534', 1, '2021-09-14', '2021-09-13 22:57:44', 1);
+(9, 'Doni Sandi', 'unggah', 'yt02.jpg', '62346346346', '6243634643', 'Sulis Tiawati', 'unggah', 'yt01.jpg', '62346765756', '6234534', 1, '2021-09-14', '2021-09-17 07:04:44', 1);
 
 -- --------------------------------------------------------
 
@@ -197,6 +204,13 @@ CREATE TABLE `tbl_orang` (
   `PUBLISH` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `tbl_orang`
+--
+
+INSERT INTO `tbl_orang` (`ID_ORANG`, `NAMA`, `TIPE_FOTO`, `FOTO`, `TMP_LAHIR`, `TGL_LAHIR`, `KETERANGAN`, `CREATE_AT`, `UPDATE_AT`, `PUBLISH`) VALUES
+(5, 'dsafsd', 'unggah', '4.jpg', 'fsdfsdf', '2021-09-17', 'sdfsdfsdf', '2021-09-09', '2021-09-17 07:06:51', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -283,6 +297,49 @@ CREATE TABLE `tbl_tahanan` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tbl_tipeb`
+--
+
+CREATE TABLE `tbl_tipeb` (
+  `ID_TIPEB` int(11) NOT NULL,
+  `NO_LAP` varchar(200) NOT NULL,
+  `NAMA_PELAPOR` varchar(200) NOT NULL,
+  `TGL_LAHIR_PELAPOR` date NOT NULL,
+  `TMPT_LAHIR_PELAPOR` varchar(200) NOT NULL,
+  `JENKEL_PELAPOR` enum('Pria','Wanita') NOT NULL,
+  `PEKERJAAN_PELAPOR` varchar(200) NOT NULL,
+  `ALAMAT_PELAPOR` text NOT NULL,
+  `TLP_PELAPOR` char(20) NOT NULL,
+  `EMAIL_PELAPOR` char(200) NOT NULL,
+  `AGAMA_PELAPOR` varchar(50) NOT NULL,
+  `WAKTU_KEJADIAN` datetime NOT NULL,
+  `TMPT_KEJADIAN` text NOT NULL,
+  `YG_TERJADI` varchar(200) NOT NULL,
+  `NAMA_KORBAN` varchar(200) NOT NULL,
+  `TMPT_LAHIR_KORBAN` varchar(200) NOT NULL,
+  `JENKEL_KORBAN` enum('Pria','Wanita') NOT NULL,
+  `ALAMAT_KORBAN` text NOT NULL,
+  `NAMA_TERLAPOR` varchar(200) NOT NULL,
+  `TMPT_LAHIR_TERLAPOR` varchar(200) NOT NULL,
+  `TGL_LAHIR_TERLAPOR` date NOT NULL,
+  `JENKEL_TERLAPOR` enum('Pria','Wanita') NOT NULL,
+  `ALAMAT_TERLAPOR` text NOT NULL,
+  `NAMA_SAKSI` varchar(200) NOT NULL,
+  `TMPT_LAHIR_SAKSI` varchar(200) NOT NULL,
+  `TGL_LAHIR_SAKSI` date NOT NULL,
+  `JENKEL_SAKSI` enum('Pria','Wanita') NOT NULL,
+  `ALAMAT_SAKSI` text NOT NULL,
+  `URAIAN_KEJADIAN` text NOT NULL,
+  `TINDAKAN_DIAMBIL` varchar(200) NOT NULL,
+  `TINDAK_PIDANA` varchar(200) NOT NULL,
+  `BRG_BUKTI` varchar(200) NOT NULL,
+  `CREATE_AT` datetime NOT NULL,
+  `UPDATE_AT` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tbl_tipec`
 --
 
@@ -313,8 +370,8 @@ CREATE TABLE `tbl_tipec` (
 --
 
 INSERT INTO `tbl_tipec` (`ID_TIPEC`, `NIK`, `NAMA`, `JENKEL`, `TMPT_LAHIR`, `TGL_LAHIR`, `AGAMA`, `ALAMAT`, `PEKERJAAN`, `EMAIL`, `NO_TLPN`, `KEWARGANEGARAAN`, `TGL_KEJADIAN`, `LOKASI_KEJADIAN`, `TOKEN_GENERATE`, `IP_ADDRESS`, `CREATE_AT`, `UPDATE_AT`, `STATUS`) VALUES
-(1, '1871132501980003', 'Rio Ananda Putra', 'Pria', 'Bandar Lampung', '1998-01-25', 'Islam', 'Pinang Jaya, Kec. Kemiling, Kota Bandar Lampung', 'Programmer', 'rioanandaputra1998@gmail.com', '085789989287', 'WNI', '2021-09-12 05:18:11', 'Jl. Imam Bonjol, Kec. Kemiling', 'MjAyMTA2MDUxNjIyOTA5OTk4UklPVEFNUEFONjBiYmE0MmU0MzQ5OA==', '::1', '2021-09-12 08:08:05', '2021-09-16 17:49:03', 'BELUM'),
-(13, '1871132501980003', 'sdfsdfsdf', 'Pria', 'Bandar Lampung', '1998-01-25', 'Islam', 'Pinang Jaya, Kec. Kemiling, Kota Bandar Lampung', 'Programmer', 'rioanandaputra1998@gmail.com', '085789989287', 'WNI', '2021-09-12 05:18:11', 'Jl. Imam Bonjol, Kec. Kemiling', 'MjAyMTA2MDUxNjIyOTA5OTk4UklPVEFNUEFONjBiYmE0MmU0MzQ5OA==', '::1', '2021-09-12 08:08:05', '2021-09-16 17:49:03', 'BELUM');
+(1, '1871132501980003', 'Rio Ananda Putra', 'Pria', 'Bandar Lampung', '1998-01-25', 'Islam', 'Pinang Jaya, Kec. Kemiling, Kota Bandar Lampung', 'Programmer', 'rioanandaputra1998@gmail.com', '085789989287', 'WNI', '2021-09-12 05:18:11', 'Jl. Imam Bonjol, Kec. Kemiling', 'MjAyMTA2MDUxNjIyOTA5OTk4UklPVEFNUEFONjBiYmE0MmU0MzQ5OA==', '::1', '2021-09-12 08:08:05', '2021-09-17 07:01:23', 'SUDAH'),
+(13, '1871132501980003', 'sdfsdfsdf', 'Pria', 'Bandar Lampung', '1998-01-25', 'Islam', 'Pinang Jaya, Kec. Kemiling, Kota Bandar Lampung', 'Programmer', 'rioanandaputra1998@gmail.com', '085789989287', 'WNI', '2021-09-12 05:18:11', 'Jl. Imam Bonjol, Kec. Kemiling', 'MjAyMTA2MDUxNjIyOTA5OTk4UklPVEFNUEFONjBiYmE0MmU0MzQ5OA==', '::1', '2021-09-12 08:08:05', '2021-09-17 07:01:02', 'SUDAH');
 
 -- --------------------------------------------------------
 
@@ -425,6 +482,12 @@ ALTER TABLE `tbl_tahanan`
   ADD PRIMARY KEY (`ID_TAHANAN`);
 
 --
+-- Indeks untuk tabel `tbl_tipeb`
+--
+ALTER TABLE `tbl_tipeb`
+  ADD PRIMARY KEY (`ID_TIPEB`);
+
+--
 -- Indeks untuk tabel `tbl_tipec`
 --
 ALTER TABLE `tbl_tipec`
@@ -450,7 +513,7 @@ ALTER TABLE `tbl_tpengaduan`
 -- AUTO_INCREMENT untuk tabel `tbl_barang`
 --
 ALTER TABLE `tbl_barang`
-  MODIFY `ID_BARANG` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_BARANG` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_berita`
@@ -492,7 +555,7 @@ ALTER TABLE `tbl_nomor`
 -- AUTO_INCREMENT untuk tabel `tbl_orang`
 --
 ALTER TABLE `tbl_orang`
-  MODIFY `ID_ORANG` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID_ORANG` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_pengaduan`
@@ -511,6 +574,12 @@ ALTER TABLE `tbl_pengguna`
 --
 ALTER TABLE `tbl_tahanan`
   MODIFY `ID_TAHANAN` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_tipeb`
+--
+ALTER TABLE `tbl_tipeb`
+  MODIFY `ID_TIPEB` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_tipec`
