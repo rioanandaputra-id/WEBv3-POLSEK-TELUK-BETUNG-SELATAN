@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Sep 2021 pada 19.59
+-- Waktu pembuatan: 26 Sep 2021 pada 19.29
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -308,27 +308,13 @@ CREATE TABLE `tbl_tipeb` (
   `TMPT_LAHIR_PELAPOR` varchar(200) NOT NULL,
   `JENKEL_PELAPOR` enum('Pria','Wanita') NOT NULL,
   `PEKERJAAN_PELAPOR` varchar(200) NOT NULL,
-  `ALAMAT_PELAPOR` text NOT NULL,
+  `ALAMAT_PELAPOR` varchar(255) NOT NULL,
   `TLP_PELAPOR` char(20) NOT NULL,
   `EMAIL_PELAPOR` char(200) NOT NULL,
   `AGAMA_PELAPOR` varchar(50) NOT NULL,
   `WAKTU_KEJADIAN` datetime NOT NULL,
-  `TMPT_KEJADIAN` text NOT NULL,
+  `TMPT_KEJADIAN` varchar(255) NOT NULL,
   `YG_TERJADI` varchar(200) NOT NULL,
-  `NAMA_KORBAN` varchar(200) NOT NULL,
-  `TMPT_LAHIR_KORBAN` varchar(200) NOT NULL,
-  `JENKEL_KORBAN` enum('Pria','Wanita') NOT NULL,
-  `ALAMAT_KORBAN` text NOT NULL,
-  `NAMA_TERLAPOR` varchar(200) NOT NULL,
-  `TMPT_LAHIR_TERLAPOR` varchar(200) NOT NULL,
-  `TGL_LAHIR_TERLAPOR` date NOT NULL,
-  `JENKEL_TERLAPOR` enum('Pria','Wanita') NOT NULL,
-  `ALAMAT_TERLAPOR` text NOT NULL,
-  `NAMA_SAKSI` varchar(200) NOT NULL,
-  `TMPT_LAHIR_SAKSI` varchar(200) NOT NULL,
-  `TGL_LAHIR_SAKSI` date NOT NULL,
-  `JENKEL_SAKSI` enum('Pria','Wanita') NOT NULL,
-  `ALAMAT_SAKSI` text NOT NULL,
   `URAIAN_KEJADIAN` text NOT NULL,
   `TINDAKAN_DIAMBIL` varchar(200) NOT NULL,
   `TINDAK_PIDANA` varchar(200) NOT NULL,
@@ -336,6 +322,45 @@ CREATE TABLE `tbl_tipeb` (
   `CREATE_AT` datetime NOT NULL,
   `UPDATE_AT` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_tipeb`
+--
+
+INSERT INTO `tbl_tipeb` (`ID_TIPEB`, `NO_LAP`, `NAMA_PELAPOR`, `TGL_LAHIR_PELAPOR`, `TMPT_LAHIR_PELAPOR`, `JENKEL_PELAPOR`, `PEKERJAAN_PELAPOR`, `ALAMAT_PELAPOR`, `TLP_PELAPOR`, `EMAIL_PELAPOR`, `AGAMA_PELAPOR`, `WAKTU_KEJADIAN`, `TMPT_KEJADIAN`, `YG_TERJADI`, `URAIAN_KEJADIAN`, `TINDAKAN_DIAMBIL`, `TINDAK_PIDANA`, `BRG_BUKTI`, `CREATE_AT`, `UPDATE_AT`) VALUES
+(31, '5', 'asdasd', '2021-09-30', 'asdsad', '', 'asdasd', 'asdasd', '435345', 'asdasd@sdfsdf.dfgdfg', 'Islam', '2021-09-10 21:50:00', 'asdasd', 'asdasd', '<p>----- Pada hari Jumat, tanggal 10 September 2021 sekira pukul 21:50 WIB di asdasd <strong>telah terjadi tindak pidana asdasd</strong> -----</p><p>----- Kronologis Kejadian ##### -----</p><p>----- <strong>Atas kejadian tersebut saya laporkan ke Polsek Teluk Betung Selatan guna Pengusutan Lebih Lanjut</strong> -----</p>', '<ol type=\"a\"><li></li><li></li><li></li></ol>', 'asdasda', 'asdasd', '2021-09-26 00:00:00', '0000-00-00 00:00:00'),
+(32, '6', 'asdasd', '2021-09-30', 'asdsad', '', 'asdasd', 'asdasd', '435345', 'asdasd@sdfsdf.dfgdfg', 'Islam', '2021-09-10 21:50:00', 'asdasd', 'asdasd', '<p>----- Pada hari Jumat, tanggal 10 September 2021 sekira pukul 21:50 WIB di asdasd <strong>telah terjadi tindak pidana asdasd</strong> -----</p><p>----- Kronologis Kejadian ##### -----</p><p>----- <strong>Atas kejadian tersebut saya laporkan ke Polsek Teluk Betung Selatan guna Pengusutan Lebih Lanjut</strong> -----</p>', '<ol type=\"a\"><li></li><li></li><li></li></ol>', 'asdasda', 'asdasd', '2021-09-26 00:00:00', '0000-00-00 00:00:00'),
+(33, '6', 'asdasd', '2021-09-30', 'asdsad', '', 'asdasd', 'asdasd', '435345', 'asdasd@sdfsdf.dfgdfg', 'Islam', '2021-09-10 21:50:00', 'asdasd', 'asdasd', '<p>----- Pada hari Jumat, tanggal 10 September 2021 sekira pukul 21:50 WIB di asdasd <strong>telah terjadi tindak pidana asdasd</strong> -----</p><p>----- Kronologis Kejadian ##### -----</p><p>----- <strong>Atas kejadian tersebut saya laporkan ke Polsek Teluk Betung Selatan guna Pengusutan Lebih Lanjut</strong> -----</p>', '<ol type=\"a\"><li></li><li></li><li></li></ol>', 'asdasda', 'asdasd', '2021-09-26 00:00:00', '0000-00-00 00:00:00'),
+(34, '6', 'asdasd', '2021-09-30', 'asdsad', '', 'asdasd', 'asdasd', '435345', 'asdasd@sdfsdf.dfgdfg', 'Islam', '2021-09-10 21:50:00', 'asdasd', 'asdasd', '<p>----- Pada hari Jumat, tanggal 10 September 2021 sekira pukul 21:50 WIB di asdasd <strong>telah terjadi tindak pidana asdasd</strong> -----</p><p>----- Kronologis Kejadian ##### -----</p><p>----- <strong>Atas kejadian tersebut saya laporkan ke Polsek Teluk Betung Selatan guna Pengusutan Lebih Lanjut</strong> -----</p>', '<ol type=\"a\"><li></li><li></li><li></li></ol>', 'asdasda', 'asdasd', '2021-09-26 00:00:00', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_tipeb_detail`
+--
+
+CREATE TABLE `tbl_tipeb_detail` (
+  `ID_TIPEB_DETAIL` int(11) NOT NULL,
+  `ID_TIPEB` int(11) NOT NULL,
+  `NAMA` varchar(200) NOT NULL,
+  `TMPT_LAHIR` varchar(200) NOT NULL,
+  `TGL_LAHIR` date NOT NULL,
+  `JENKEL` enum('Pria','Wanita') NOT NULL,
+  `ALAMAT` varchar(255) NOT NULL,
+  `KET` enum('Korban','Terlapor','Saksi') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_tipeb_detail`
+--
+
+INSERT INTO `tbl_tipeb_detail` (`ID_TIPEB_DETAIL`, `ID_TIPEB`, `NAMA`, `TMPT_LAHIR`, `TGL_LAHIR`, `JENKEL`, `ALAMAT`, `KET`) VALUES
+(70, 34, 'gfdfgfdg', 'dfgdfg', '2021-08-31', 'Pria', 'dfgfdg', 'Korban'),
+(71, 0, '', '', '0000-00-00', '', '', 'Korban'),
+(72, 0, '', '', '0000-00-00', '', '', 'Terlapor'),
+(73, 0, '', '', '0000-00-00', '', '', 'Korban'),
+(74, 0, '', '', '0000-00-00', '', '', 'Terlapor'),
+(75, 0, '', '', '0000-00-00', '', '', 'Saksi');
 
 -- --------------------------------------------------------
 
@@ -364,14 +389,6 @@ CREATE TABLE `tbl_tipec` (
   `UPDATE_AT` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `STATUS` enum('BELUM','SUDAH') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `tbl_tipec`
---
-
-INSERT INTO `tbl_tipec` (`ID_TIPEC`, `NIK`, `NAMA`, `JENKEL`, `TMPT_LAHIR`, `TGL_LAHIR`, `AGAMA`, `ALAMAT`, `PEKERJAAN`, `EMAIL`, `NO_TLPN`, `KEWARGANEGARAAN`, `TGL_KEJADIAN`, `LOKASI_KEJADIAN`, `TOKEN_GENERATE`, `IP_ADDRESS`, `CREATE_AT`, `UPDATE_AT`, `STATUS`) VALUES
-(1, '1871132501980003', 'Rio Ananda Putra', 'Pria', 'Bandar Lampung', '1998-01-25', 'Islam', 'Pinang Jaya, Kec. Kemiling, Kota Bandar Lampung', 'Programmer', 'rioanandaputra1998@gmail.com', '085789989287', 'WNI', '2021-09-12 05:18:11', 'Jl. Imam Bonjol, Kec. Kemiling', 'MjAyMTA2MDUxNjIyOTA5OTk4UklPVEFNUEFONjBiYmE0MmU0MzQ5OA==', '::1', '2021-09-12 08:08:05', '2021-09-17 07:01:23', 'SUDAH'),
-(13, '1871132501980003', 'sdfsdfsdf', 'Pria', 'Bandar Lampung', '1998-01-25', 'Islam', 'Pinang Jaya, Kec. Kemiling, Kota Bandar Lampung', 'Programmer', 'rioanandaputra1998@gmail.com', '085789989287', 'WNI', '2021-09-12 05:18:11', 'Jl. Imam Bonjol, Kec. Kemiling', 'MjAyMTA2MDUxNjIyOTA5OTk4UklPVEFNUEFONjBiYmE0MmU0MzQ5OA==', '::1', '2021-09-12 08:08:05', '2021-09-17 07:01:02', 'SUDAH');
 
 -- --------------------------------------------------------
 
@@ -409,6 +426,17 @@ CREATE TABLE `tbl_tpengaduan` (
   `PENGIRIM` varchar(200) NOT NULL,
   `TANGGAPAN` varchar(255) NOT NULL,
   `CREATE_AT` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `test`
+--
+
+CREATE TABLE `test` (
+  `ID_TEST` int(11) NOT NULL,
+  `NAMA` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -488,6 +516,12 @@ ALTER TABLE `tbl_tipeb`
   ADD PRIMARY KEY (`ID_TIPEB`);
 
 --
+-- Indeks untuk tabel `tbl_tipeb_detail`
+--
+ALTER TABLE `tbl_tipeb_detail`
+  ADD PRIMARY KEY (`ID_TIPEB_DETAIL`);
+
+--
 -- Indeks untuk tabel `tbl_tipec`
 --
 ALTER TABLE `tbl_tipec`
@@ -504,6 +538,12 @@ ALTER TABLE `tbl_tipec_detail`
 --
 ALTER TABLE `tbl_tpengaduan`
   ADD PRIMARY KEY (`ID_TPENGADUAN`);
+
+--
+-- Indeks untuk tabel `test`
+--
+ALTER TABLE `test`
+  ADD PRIMARY KEY (`ID_TEST`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -579,7 +619,13 @@ ALTER TABLE `tbl_tahanan`
 -- AUTO_INCREMENT untuk tabel `tbl_tipeb`
 --
 ALTER TABLE `tbl_tipeb`
-  MODIFY `ID_TIPEB` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_TIPEB` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_tipeb_detail`
+--
+ALTER TABLE `tbl_tipeb_detail`
+  MODIFY `ID_TIPEB_DETAIL` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_tipec`
@@ -598,6 +644,12 @@ ALTER TABLE `tbl_tipec_detail`
 --
 ALTER TABLE `tbl_tpengaduan`
   MODIFY `ID_TPENGADUAN` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `test`
+--
+ALTER TABLE `test`
+  MODIFY `ID_TEST` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

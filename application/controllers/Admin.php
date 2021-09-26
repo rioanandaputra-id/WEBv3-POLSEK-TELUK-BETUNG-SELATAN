@@ -2194,8 +2194,10 @@ class Admin extends BaseController
     }
     function tipeb_add()
     {
+        $this->load->model('backend/tipeb_model', 'tipeb');
+        $data['no_lap'] = $this->tipeb->get_lapdesc();
         $this->global = ['pageTitle' => 'Menu Tambah Laporan Tipe B', 'menuPage' => 4];
-        $this->LvBackend('_backend/tipe-b/add', $this->global, NULL, NULL, NULL);
+        $this->LvBackend('_backend/tipe-b/add', $this->global, NULL, $data, NULL);
     }
     public function tipeb_ajax()
     {
@@ -2226,5 +2228,376 @@ class Admin extends BaseController
         $data = $this->input->post('data');
         $query = $this->tipec->delete($data);
         echo json_encode($query);
+    }
+    public function tipeb_save()
+    {
+        $this->load->model('backend/tipeb_model', 'tipeb');
+        $rules_1 = array(
+            array(
+                'field' => 'no',
+                'label' => 'Nomor Laporan',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'a',
+                'label' => 'Nama Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'b',
+                'label' => 'Tempat Lahir Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'c',
+                'label' => 'Tanggal Lahir Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'd',
+                'label' => 'Jenis Kelamin Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'e',
+                'label' => 'Pekerjaan Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'f',
+                'label' => 'Agama Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Belum Dipilih.',
+                ),
+            ),
+            array(
+                'field' => 'g',
+                'label' => 'Telpon Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'h',
+                'label' => 'Email Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'i',
+                'label' => 'Alamat Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'j',
+                'label' => 'Waktu Kejadian',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'k',
+                'label' => 'Tempat Kejadian',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'l',
+                'label' => 'Apa Yang Terjadi',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'bb',
+                'label' => 'Uraian Kejadian',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'cc',
+                'label' => 'Tindakan Yang Diambil',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'dd',
+                'label' => 'Tindak Pidana Apa',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'ee',
+                'label' => 'Barang Bukti',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+        );
+        $status = false;
+        $this->form_validation->set_rules($rules_1);
+        if ($this->form_validation->run() == TRUE) {
+            $data_1 = array(
+                'NO_LAP' => $_POST['no'],
+                'NAMA_PELAPOR' => $_POST['a'],
+                'TMPT_LAHIR_PELAPOR' =>  $_POST['b'],
+                'TGL_LAHIR_PELAPOR' => $_POST['c'],
+                'JENKEL_PELAPOR' =>  $_POST['d'],
+                'PEKERJAAN_PELAPOR' => $_POST['e'],
+                'AGAMA_PELAPOR' =>  $_POST['f'],
+                'TLP_PELAPOR' => $_POST['g'],
+                'EMAIL_PELAPOR' =>  $_POST['h'],
+                'ALAMAT_PELAPOR' => $_POST['i'],
+                'WAKTU_KEJADIAN' => $_POST['j'],
+                'TMPT_KEJADIAN' => $_POST['k'],
+                'YG_TERJADI' => $_POST['l'],
+                'URAIAN_KEJADIAN' =>  $_POST['bb'],
+                'TINDAKAN_DIAMBIL' =>  $_POST['cc'],
+                'TINDAK_PIDANA' => $_POST['dd'],
+                'BRG_BUKTI' =>  $_POST['ee'],
+                'CREATE_AT' =>  date('Y-m-d')
+            );
+            $query_1 = $this->tipeb->save_1($data_1);
+            $status = ($query_1 > 0) ? true : false;
+        }
+        $data_2 = array();
+        if (isset($_POST['m'])) {
+            $rules_2 = array(
+                array(
+                    'field' => 'm',
+                    'label' => 'Nama Korban',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+                array(
+                    'field' => 'n',
+                    'label' => 'Tempat Lahir Korban',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+                array(
+                    'field' => 'o',
+                    'label' => 'Tanggal Lahir Korban',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+                array(
+                    'field' => 'p',
+                    'label' => 'Jenis Kelamin Korban',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Belum Dipilih.',
+                    ),
+                ),
+                array(
+                    'field' => 'q',
+                    'label' => 'Alamat Korban',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+            );
+            $this->form_validation->set_rules($rules_2);
+            if ($this->form_validation->run() == TRUE) {
+                foreach ($_POST['m'] as $x => $val) {
+                    $data_a = array(
+                        'ID_TIPEB' => $query_1,
+                        'NAMA' => $_POST['m'][$x],
+                        'TMPT_LAHIR' => $_POST['n'][$x],
+                        'TGL_LAHIR' => $_POST['o'][$x],
+                        'JENKEL' => $_POST['p'][$x],
+                        'ALAMAT' => $_POST['q'][$x],
+                        'KET' => 'Korban',
+                    );
+                    array_push($data_2, $data_a);
+                }
+                $query_2 = $this->tipeb->save_2($data_2);
+                $status = ($query_2 > 0) ? true : false;
+            }
+        }
+        if (isset($_POST['r'])) {
+            $rules_3 = array(
+                array(
+                    'field' => 'r',
+                    'label' => 'Nama Terlapor',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+                array(
+                    'field' => 's',
+                    'label' => 'Tempat Lahir Terlapor',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+                array(
+                    'field' => 't',
+                    'label' => 'Tanggal Lahir Terlapor',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+                array(
+                    'field' => 'u',
+                    'label' => 'Jenis Kelamin Terlapor',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Belum Dipilih.',
+                    ),
+                ),
+                array(
+                    'field' => 'v',
+                    'label' => 'Alamat Terlapor',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+            );
+            $this->form_validation->set_rules($rules_3);
+            if ($this->form_validation->run() == TRUE) {
+                foreach ($_POST['r'] as $x => $val) {
+                    $data_b = array(
+                        'ID_TIPEB' => $query_1,
+                        'NAMA' => $_POST['r'][$x],
+                        'TMPT_LAHIR' => $_POST['s'][$x],
+                        'TGL_LAHIR' => $_POST['t'][$x],
+                        'JENKEL' => $_POST['u'][$x],
+                        'ALAMAT' => $_POST['v'][$x],
+                        'KET' => 'Terlapor',
+                    );
+                    array_push($data_2, $data_b);
+                }
+                $query_3 = $this->tipeb->save_2($data_2);
+                $status = ($query_3 > 0) ? true : false;
+            }
+        }
+        if (isset($_POST['w'])) {
+            $rules_4 = array(
+                array(
+                    'field' => 'w',
+                    'label' => 'Nama Saksi',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+                array(
+                    'field' => 'x',
+                    'label' => 'Tempat Lahir Saksi',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+                array(
+                    'field' => 'y',
+                    'label' => 'Tanggal Lahir Saksi',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+                array(
+                    'field' => 'z',
+                    'label' => 'Jenis Kelamin Saksi',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Belum Dipilih.',
+                    ),
+                ),
+                array(
+                    'field' => 'aa',
+                    'label' => 'Alamat Saksi',
+                    'rules' => 'required',
+                    'errors' => array(
+                        'required' => '%s Tidak Boleh Kosong.',
+                    ),
+                ),
+            );
+            $this->form_validation->set_rules($rules_4);
+            if ($this->form_validation->run() == TRUE) {
+                foreach ($_POST['w'] as $x => $val) {
+                    $data_c = array(
+                        'ID_TIPEB' => $query_1,
+                        'NAMA' => $_POST['w'][$x],
+                        'TMPT_LAHIR' => $_POST['x'][$x],
+                        'TGL_LAHIR' => $_POST['y'][$x],
+                        'JENKEL' => $_POST['z'][$x],
+                        'ALAMAT' => $_POST['aa'][$x],
+                        'KET' => 'Saksi',
+                    );
+                    array_push($data_2, $data_c);
+                }
+                $query_4 = $this->tipeb->save_2($data_2);
+                $status = ($query_4 > 0) ? true : false;
+            }
+        }
+        if ($status == true) {
+            $respon = array(
+                "status" => "true",
+                "msg" => "Laporan Tipe B Disimpan",
+            );
+            echo json_encode($respon);
+        } elseif ($this->form_validation->run() == false) {
+            $respon = array(
+                "status" => "false",
+                "msg" => validation_errors(),
+            );
+            echo json_encode($respon);
+        } else {
+            $respon = array(
+                "status" => "false",
+                "msg" => "Laporan Tipe B Tidak Disimpan",
+            );
+            echo json_encode($respon);
+        }
     }
 }
