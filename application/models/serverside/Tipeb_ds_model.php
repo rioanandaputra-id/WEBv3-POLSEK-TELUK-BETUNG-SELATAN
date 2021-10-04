@@ -15,6 +15,7 @@ class Tipeb_ds_model extends CI_Model
     private function _get_datatables_query()
     {
         $this->db->from($this->table);
+        $this->db->where(array('STATUS' => $this->input->post("STATUS"), 'STATUS' => $this->input->post("STATUS")));
         $i = 0;
         foreach ($this->column_search as $item) // looping awal
         {
@@ -56,6 +57,7 @@ class Tipeb_ds_model extends CI_Model
     public function count_all()
     {
         $this->db->from($this->table);
+        $this->db->where(array('STATUS' => $this->input->post("STATUS"), 'STATUS' => $this->input->post("STATUS")));
         return $this->db->count_all_results();
     }
 }

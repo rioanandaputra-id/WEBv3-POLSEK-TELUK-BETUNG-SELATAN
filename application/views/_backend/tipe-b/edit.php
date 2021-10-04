@@ -13,23 +13,27 @@
                     </div>
                 </div>
                 <div class="card-body">
+
+                    <!-- START FORM -->
                     <form id="formtipeb" method="POST" onsubmit="return false">
                         <div class="row">
                             <div class="col">
+
                                 <div class="row">
                                     <div class="col">
                                         <label>Nomor Laporan:</label>
-                                        <input type="text" class="form-control" value="LP/B/" disabled>
+                                        <input type="text" class="form-control" value="LP/B/" readonly>
                                     </div>
                                     <div class="col">
                                         <label>.</label>
-                                        <input type="number" name="no" class="form-control" value="<?= $no_lap[0]->NO_LAP + 1; ?>">
+                                        <input type="number" name="no" class="form-control" value="<?= $tipeb[0]->NO_LAP; ?>" readonly>
                                     </div>
                                     <div class="col">
                                         <label>.</label>
-                                        <input type="text" class="form-control" value="/<?= getRomawi(date('n')) ?>/<?= date('Y') ?>/RESTA BALAM/SEKTOR TBS" disabled>
+                                        <input type="text" class="form-control" value="/<?= getRomawi(date('n', strtotime($tipeb[0]->CREATE_AT))) ?>/<?= date('Y', strtotime($tipeb[0]->CREATE_AT)) ?>/RESTA BALAM/SEKTOR TBS" readonly>
                                     </div>
                                 </div>
+
                                 <div class="row mt-4 mb-3">
                                     <div class="col">
                                         <h1 class="h5 text-danger"><strong>1. YANG MELAPORKAN</strong></h1>
@@ -40,63 +44,66 @@
                                         <div class="row mt-2">
                                             <div class="col">
                                                 <label>Nama Pelapor:</label>
-                                                <input type="text" name="a" class="form-control">
+                                                <input type="hidden" name="id" value="<?= $tipeb[0]->ID_TIPEB; ?>">
+                                                <input type="text" name="a" class="form-control" value="<?= $tipeb[0]->NAMA_PELAPOR; ?>">
                                             </div>
                                             <div class="col">
                                                 <label>Tempat Lahir Pelapor:</label>
-                                                <input type="text" name="b" class="form-control">
+                                                <input type="text" name="b" class="form-control" value="<?= $tipeb[0]->TMPT_LAHIR_PELAPOR; ?>">
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col">
                                                 <label>Tanggal Lahir Pelapor:</label>
-                                                <input type="date" name="c" class="form-control">
+                                                <input type="date" name="c" class="form-control" value="<?= $tipeb[0]->TGL_LAHIR_PELAPOR; ?>">
                                             </div>
                                             <div class="col">
                                                 <label>Jenis Kelamin Pelapor:</label>
                                                 <select class="form-control" name="d">
                                                     <option>==Pilih==</option>
-                                                    <option value="Pria">Pria</option>
-                                                    <option value="Wanita">Wanita</option>
+                                                    <option value="">== PILIH ==</option>
+                                                    <option value="Pria" <?= $tipeb[0]->JENKEL_PELAPOR == "Pria" ? 'selected' : ''; ?>>Pria</option>
+                                                    <option value="Wanita" <?= $tipeb[0]->JENKEL_PELAPOR == "Wanita" ? 'selected' : ''; ?>>Wanita</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col">
                                                 <label>Pekerjaan Pelapor:</label>
-                                                <input type="text" name="e" class="form-control">
+                                                <input type="text" name="e" class="form-control" value="<?= $tipeb[0]->PEKERJAAN_PELAPOR; ?>">
                                             </div>
                                             <div class="col">
                                                 <label>Agama Pelapor:</label>
                                                 <select class="form-control" name="f">
                                                     <option>==Pilih==</option>
-                                                    <option value="Islam">Islam</option>
-                                                    <option value="Katholik">Katholik</option>
-                                                    <option value="Protestan">Protestan</option>
-                                                    <option value="Hindu">Hindu</option>
-                                                    <option value="Budha">Budha</option>
-                                                    <option value="Konghucu">Konghucu</option>
+                                                    <option value="Islam" <?= $tipeb[0]->AGAMA_PELAPOR == "Islam" ? 'selected' : ''; ?>>Islam</option>
+                                                    <option value="Katholik" <?= $tipeb[0]->AGAMA_PELAPOR == "Katholik" ? 'selected' : ''; ?>>Katholik</option>
+                                                    <option value="Protestan" <?= $tipeb[0]->AGAMA_PELAPOR == "Protestan" ? 'selected' : ''; ?>>Protestan</option>
+                                                    <option value="Hindu" <?= $tipeb[0]->AGAMA_PELAPOR == "Hindu" ? 'selected' : ''; ?>>Hindu</option>
+                                                    <option value="Budha" <?= $tipeb[0]->AGAMA_PELAPOR == "Budha" ? 'selected' : ''; ?>>Budha</option>
+                                                    <option value="Konghucu" <?= $tipeb[0]->AGAMA_PELAPOR == "Konghucu" ? 'selected' : ''; ?>>Konghucu</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col">
                                                 <label>Telpon Pelapor:</label>
-                                                <input type="number" name="g" class="form-control">
+                                                <input type="number" name="g" class="form-control" value="<?= $tipeb[0]->TLP_PELAPOR; ?>">
                                             </div>
                                             <div class="col">
                                                 <label>Email Pelapor:</label>
-                                                <input type="email" name="h" class="form-control">
+                                                <input type="email" name="h" class="form-control" value="<?= $tipeb[0]->EMAIL_PELAPOR; ?>">
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col">
                                                 <label>Alamat Pelapor:</label>
-                                                <input type="text" name="i" class="form-control">
+                                                <input type="text" name="i" class="form-control" value="<?= $tipeb[0]->ALAMAT_PELAPOR; ?>">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row mt-4 mb-3">
                                     <div class="col">
                                         <h1 class="h5 text-danger"><strong>2. PERISTIWA YANG DILAPORKAN</strong></h1>
@@ -107,68 +114,192 @@
                                         <div class="row mt-2">
                                             <div class="col">
                                                 <label>Waktu Kejadian:</label>
-                                                <input type="datetime-local" name="j" class="form-control" id="j2">
+                                                <input type="datetime-local" name="j" class="form-control" id="j2" value="<?= date('Y-m-d\TH:i', strtotime($tipeb[0]->WAKTU_KEJADIAN)); ?>">
                                             </div>
                                             <div class="col">
                                                 <label>Tempat Kejadian:</label>
-                                                <input type="text" name="k" class="form-control" id="k2">
+                                                <input type="text" name="k" class="form-control" id="k2" value="<?= $tipeb[0]->TMPT_KEJADIAN; ?>">
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col">
                                                 <label>Apa Yang Terjadi:</label>
-                                                <input type="text" name="l" class="form-control" id="l2">
+                                                <input type="text" name="l" class="form-control" id="l2" value="<?= $tipeb[0]->YG_TERJADI; ?>">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
-
                                 <!-- START KORBAN -->
                                 <div class="row mt-5 mb-3">
                                     <div class="col">
                                         <h1 class="h5 text-danger"><strong>A. SIAPA KORBAN ?</strong> <button onclick="addslota();" class="btn btn-sm btn-light"><i class="fas fa-plus-circle"></i></button> <button onclick="delslota();" class="btn btn-sm btn-light"><i class="fas fa-minus-circle"></i></button></h1>
-                                        <strong> (<input id="cka" name="cka" type="checkbox"> <i>Ceklis Jika Korban Adalah Pelapor</i></strong>)
+                                        <strong> (<input id="cka" name="cka" type="checkbox" <?= $tipeb[0]->CK_KORBAN == 1 ? 'checked' : ''; ?>> <i>Ceklis Jika Korban Adalah Pelapor</i></strong>)
                                     </div>
                                 </div>
-                                <input type="hidden" id="counta" value="0">
+                                <?php
+                                $CI = &get_instance();
+                                $CI->load->model('backend/tipeb_model');
+                                $result = $CI->tipeb->getdet(array("ID_TIPEB" => $tipeb[0]->ID_TIPEB, "KET" => "Korban"));
+                                if ($CI->db->affected_rows() > 0) :
+                                    $i = 1;
+                                    foreach ($result as $record1) : ?>
+                                        <div id="seca<?= $i; ?>">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Nama Korban ke-<?= $i; ?>:</label>
+                                                    <input type="text" name="m[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->NAMA; ?>">
+                                                </div>
+                                                <div class="col">
+                                                    <label>Tempat Lahir Korban ke-<?= $i; ?>:</label>
+                                                    <input type="text" name="n[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->TMPT_LAHIR; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Tanggal Lahir Korban ke-<?= $i; ?>:</label>
+                                                    <input type="date" name="o[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->TGL_LAHIR; ?>">
+                                                </div>
+                                                <div class="col">
+                                                    <label>Jenis Kelamin Korban ke-<?= $i; ?>:</label>
+                                                    <select name="p[<?= ($i - 1); ?>]" class="form-control">
+                                                        <option value="">==Pilih==</option>
+                                                        <option value="Pria" <?= $record1->JENKEL == "Pria" ? 'selected' : ''; ?>>Pria</option>
+                                                        <option value="Wanita" <?= $record1->JENKEL == "Wanita" ? 'selected' : ''; ?>>Wanita</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Alamat Korban ke-<?= $i; ?>:</label>
+                                                    <input type="text" name="q[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->ALAMAT; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php $i++;
+                                    endforeach; ?>
+                                    <input type="hidden" id="counta" value="<?= ($i - 1); ?>">
+                                <?php else : ?>
+                                    <input type="hidden" id="counta" value="0">
+                                <?php endif; ?>
                                 <div id="slota"></div>
                                 <!-- END KORBAN -->
-
                                 <!-- START TERLAPOR -->
                                 <div class="row mt-4 mb-3">
                                     <div class="col">
                                         <h1 class="h5 text-danger"><strong>B. SIAPA TERLAPOR ?</strong> <button onclick="addslotb();" class="disb btn btn-sm btn-light"><i class="fas fa-plus-circle"></i></button><button onclick="delslotb();" class="disb btn btn-sm btn-light"><i class="fas fa-minus-circle"></i></button></h1>
-                                        <strong> (<input id="ckb" name="ckb" type="checkbox"> <i>Ceklis Jika Terlapor Adalah Lidik</i></strong>)
+                                        <strong> (<input id="ckb" name="ckb" type="checkbox" <?= $tipeb[0]->CK_TERLAPOR == 1 ? 'checked' : ''; ?>> <i>Ceklis Jika Terlapor Adalah Lidik</i></strong>)
                                     </div>
                                 </div>
-                                <input type="hidden" id="countb" value="0">
+                                <?php
+                                $CI = &get_instance();
+                                $CI->load->model('backend/tipeb_model');
+                                $result = $CI->tipeb->getdet(array("ID_TIPEB" => $tipeb[0]->ID_TIPEB, "KET" => "Terlapor"));
+                                if ($CI->db->affected_rows() > 0) :
+                                    $i = 1;
+                                    foreach ($result as $record1) : ?>
+                                        <div class="rmckb" id="secb<?= $i; ?>">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Nama Terlapor ke-<?= $i; ?>:</label>
+                                                    <input type="text" name="r[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->NAMA; ?>">
+                                                </div>
+                                                <div class="col">
+                                                    <label>Tempat Lahir Terlapor ke-<?= $i; ?>:</label>
+                                                    <input type="text" name="s[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->TMPT_LAHIR; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Tanggal Lahir Terlapor ke-<?= $i; ?>:</label>
+                                                    <input type="date" name="t[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->TGL_LAHIR; ?>">
+                                                </div>
+                                                <div class="col">
+                                                    <label>Jenis Kelamin Terlapor ke-<?= $i; ?>:</label>
+                                                    <select name="u[<?= ($i - 1); ?>]" class="form-control">
+                                                        <option value="">==Pilih==</option>
+                                                        <option value="Pria" <?= $record1->JENKEL == "Pria" ? 'selected' : ''; ?>>Pria</option>
+                                                        <option value="Wanita" <?= $record1->JENKEL == "Wanita" ? 'selected' : ''; ?>>Wanita</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Alamat Terlapor ke-<?= $i; ?>:</label>
+                                                    <input type="text" name="v[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->ALAMAT; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php $i++;
+                                    endforeach; ?>
+                                    <input type="hidden" id="countb" value="<?= ($i - 1); ?>">
+                                <?php else : ?>
+                                    <input type="hidden" id="countb" value="0">
+                                <?php endif; ?>
                                 <div id="slotb"></div>
                                 <!-- END TERLAPOR -->
-
                                 <!-- START SAKSI -->
                                 <div class="row mt-4 mb-3">
                                     <div class="col">
                                         <h1 class="h5 text-danger"><strong>C. SIAPA SAKSI ?</strong> <button onclick="addslotc();" class="disc btn btn-sm btn-light"><i class="fas fa-plus-circle"></i></button><button onclick="delslotc();" class="disc btn btn-sm btn-light"><i class="fas fa-minus-circle"></i></button></h1>
-                                        <strong> (<input id="ckc" name="ckc" type="checkbox"> <i>Ceklis Jika Saksi Tidak Ada</i></strong>)
+                                        <strong> (<input id="ckc" name="ckc" type="checkbox" <?= $tipeb[0]->CK_SAKSI == 1 ? 'checked' : ''; ?>> <i>Ceklis Jika Saksi Tidak Ada</i></strong>)
                                     </div>
                                 </div>
-                                <input type="hidden" id="countc" value="0">
+                                <?php
+                                $CI = &get_instance();
+                                $CI->load->model('backend/tipeb_model');
+                                $result = $CI->tipeb->getdet(array("ID_TIPEB" => $tipeb[0]->ID_TIPEB, "KET" => "Saksi"));
+                                if ($CI->db->affected_rows() > 0) :
+                                    $i = 1;
+                                    foreach ($result as $record1) : ?>
+                                        <div class="rmckc" id="secc<?= $i; ?>">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Nama Saksi ke-<?= $i; ?>:</label>
+                                                    <input type="text" name="w[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->NAMA; ?>">
+                                                </div>
+                                                <div class="col">
+                                                    <label>Tempat Lahir Saksi ke-<?= $i; ?>:</label>
+                                                    <input type="text" name="x[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->TMPT_LAHIR; ?>">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Tanggal Lahir Saksi ke-<?= $i; ?>:</label>
+                                                    <input type="date" name="y[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->TGL_LAHIR; ?>">
+                                                </div>
+                                                <div class="col">
+                                                    <label>Jenis Kelamin Saksi ke-<?= $i; ?>:</label>
+                                                    <select name="z[<?= ($i - 1); ?>]" class="form-control">
+                                                        <option value="">==Pilih==</option>
+                                                        <option value="Pria" <?= $record1->JENKEL == "Pria" ? 'selected' : ''; ?>>Pria</option>
+                                                        <option value="Wanita" <?= $record1->JENKEL == "Wanita" ? 'selected' : ''; ?>>Wanita</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Alamat Saksi ke-<?= $i; ?>:</label>
+                                                    <input type="text" name="aa[<?= ($i - 1); ?>]" class="form-control" value="<?= $record1->ALAMAT; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php $i++;
+                                    endforeach; ?>
+                                    <input type="hidden" id="countc" value="<?= ($i - 1); ?>">
+                                <?php else : ?>
+                                    <input type="hidden" id="countc" value="0">
+                                <?php endif; ?>
                                 <div id="slotc"></div>
                                 <!-- END SAKSI -->
 
-
-
-
-                                <div class="row mt-4 mb-3">
+                                <div class="row mt-5 mb-3">
                                     <div class="col">
                                         <h1 class="h5 text-danger"><strong>3. URAIAN KEJADIAN</strong></h1>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <textarea id="bb" name="bb"></textarea>
+                                        <textarea id="bb" name="bb"><?= $tipeb[0]->URAIAN_KEJADIAN; ?></textarea>
                                     </div>
                                 </div>
                                 <div class="row mt-4 mb-3">
@@ -179,24 +310,24 @@
                                 <div class="row">
                                     <div class="col">
                                         <label>Tindakan yang diambil:</label>
-                                        <textarea id="cc" name="cc"></textarea>
+                                        <textarea id="cc" name="cc"><?= $tipeb[0]->TINDAKAN_DIAMBIL; ?></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <label>Tindak Pidana Apa:</label>
-                                        <input type="text" name="dd" class="form-control">
+                                        <input type="text" name="dd" class="form-control" value="<?= $tipeb[0]->TINDAK_PIDANA; ?>">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <label>Barang Bukti:</label>
-                                        <input type="text" name="ee" class="form-control">
+                                        <input type="text" name="ee" class="form-control" value="<?= $tipeb[0]->BRG_BUKTI; ?>">
                                     </div>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col">
-                                        <button type="button" class="btn btn-primary" onclick="form_submit()"><strong><i class="fas fa-save"></i> Simpan laporan Tipe B</strong></button>
+                                        <button type="button" class="btn btn-primary" onclick="form_submit()"><strong><i class="fas fa-save"></i> Ubah laporan Tipe B</strong></button>
                                         <button type="reset" class="btn btn-danger"><strong><i class="fas fa-sync"></i> Reset</strong></button>
                                         <button onclick="window.history.back();" class="btn btn-secondary"><strong><i class="fas fa-arrow-left"></i> Kembali</strong></button>
                                     </div>
@@ -204,6 +335,7 @@
                             </div>
                         </div>
                     </form>
+                    <!-- END FORM -->
                 </div>
             </div>
         </div>
@@ -226,67 +358,36 @@
             height: 100,
             toolbar: []
         });
-        $('#cka').change(function() {
-            if ($(this).is(":checked")) {
-                $('#l').val('PELAPOR');
-                $('.ipa').prop('disabled', true);
-            } else {
-                $('#l').val('');
-                $('.ipa').prop('disabled', false);
-            }
-        });
+    });
+
+    $(document).ready(function() {
+        if ($('#ckb').is(":checked")) {
+            $('.disb').prop('disabled', true);
+            $('.rmckb').remove();
+            $('#countb').val('0');
+        }
+        if ($('#ckc').is(":checked")) {
+            $('.disc').prop('disabled', true);
+            $('.rmckc').remove();
+            $('#countc').val('0');
+        }
         $('#ckb').change(function() {
             if ($(this).is(":checked")) {
-                $('#r').val('LIDIK');
-                $('.ipb').prop('disabled', true);
                 $('.disb').prop('disabled', true);
                 $('.rmckb').remove();
-                $('#countb').val('1');
+                $('#countb').val('0');
             } else {
-                $('#r').val('');
-                $('.ipb').prop('disabled', false);
                 $('.disb').prop('disabled', false);
             }
         });
         $('#ckc').change(function() {
             if ($(this).is(":checked")) {
-                $('#w').val('-');
-                $('.ipc').prop('disabled', true);
                 $('.disc').prop('disabled', true);
                 $('.rmckc').remove();
-                $('#countc').val('1');
+                $('#countc').val('0');
             } else {
-                $('#w').val('');
-                $('.ipc').prop('disabled', false);
                 $('.disc').prop('disabled', false);
             }
-        });
-        $('#cc').summernote('code', '<ol type="a"><li></li><li></li><li></li></ol>');
-        var j2 = "#####",
-            k2 = "#####",
-            l2 = "#####";
-        $("#j2").change(function(event) {
-            var namahari = ("Minggu Senin Selasa Rabu Kamis Jumat Sabtu");
-            namahari = namahari.split(" ");
-            var namabulan = ("Januari Februari Maret April Mei Juni Juli Agustus September Oktober November Desember");
-            namabulan = namabulan.split(" ");
-            var tgl = new Date($(this).val());
-            var hari = tgl.getDay();
-            var tanggal = tgl.getDate();
-            var bulan = tgl.getMonth();
-            var tahun = tgl.getFullYear();
-            var hour = tgl.getHours();
-            var minutes = tgl.getMinutes();
-            j2 = "Pada hari " + namahari[hari] + ", tanggal " + tanggal + " " + namabulan[bulan] + " " + tahun + " sekira pukul " + hour + ":" + minutes + " WIB";
-            $('#bb').summernote('code', '<p>----- ' + j2 + ' di ' + k2 + ' <strong>telah terjadi tindak pidana ' + l2 + '</strong> -----</p><p>----- Kronologis Kejadian ##### -----</p><p>----- <strong>Atas kejadian tersebut saya laporkan ke Polsek Teluk Betung Selatan guna Pengusutan Lebih Lanjut</strong> -----</p>');
-        });
-        $("#k2").keyup(function(event) {
-            k2 = $(this).val();
-            $('#bb').summernote('code', '<p>----- ' + j2 + ' di ' + k2 + ' <strong>telah terjadi tindak pidana ' + l2 + '</strong> -----</p><p>----- Kronologis Kejadian ##### -----</p><p>----- <strong>Atas kejadian tersebut saya laporkan ke Polsek Teluk Betung Selatan guna Pengusutan Lebih Lanjut</strong> -----</p>');
-        });
-        $("#l2").keyup(function(event) {
-            l2 = $(this).val();
-            $('#bb').summernote('code', '<p>----- ' + j2 + ' di ' + k2 + ' <strong>telah terjadi tindak pidana ' + l2 + '</strong> -----</p><p>----- Kronologis Kejadian ##### -----</p><p>----- <strong>Atas kejadian tersebut saya laporkan ke Polsek Teluk Betung Selatan guna Pengusutan Lebih Lanjut</strong> -----</p>');
         });
     });
 
@@ -351,7 +452,7 @@
                                     </div>
                                     <div class="col">
                                         <label>Jenis Kelamin Terlapor ke-` + count + `:</label>
-                                        <select name="p[` + (count - 1) + `]" class="ipa form-control">
+                                        <select name="u[` + (count - 1) + `]" class="ipa form-control">
                                             <option value="">==Pilih==</option>
                                             <option value="Pria">Pria</option>
                                             <option value="Wanita">Wanita</option>
@@ -408,7 +509,7 @@
 
     function delslota() {
         $('#seca' + $('#counta').val()).remove();
-        if ($('#counta').val() != 1) {
+        if ($('#counta').val() != 0) {
             $('#counta').val(function(i, oldval) {
                 return --oldval;
             });
@@ -417,7 +518,7 @@
 
     function delslotb() {
         $('#secb' + $('#countb').val()).remove();
-        if ($('#countb').val() != 1) {
+        if ($('#countb').val() != 0) {
             $('#countb').val(function(i, oldval) {
                 return --oldval;
             });
@@ -426,7 +527,7 @@
 
     function delslotc() {
         $('#secc' + $('#countc').val()).remove();
-        if ($('#countc').val() != 1) {
+        if ($('#countc').val() != 0) {
             $('#countc').val(function(i, oldval) {
                 return --oldval;
             });
@@ -436,7 +537,7 @@
     function form_submit() {
         var formData = new FormData($("#formtipeb")[0]);
         $.ajax({
-            url: "<?= base_url('admin/tipeb_save/'); ?>",
+            url: "<?= base_url('admin/tipeb_update/'); ?>",
             type: 'POST',
             data: formData,
             cache: false,
@@ -451,20 +552,12 @@
                         'error'
                     );
                 } else {
-                    Swal.fire({
-                        title: data.msg,
-                        icon: 'success',
-                        showCancelButton: true,
-                        confirmButtonColor: '#d33',
-                        cancelButtonColor: '#3085d6',
-                        confirmButtonText: 'Tidak, Kembali',
-                        cancelButtonText: 'Tambahkan Lainnya'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = "<?= base_url('admin/laporan/tipeb'); ?>";
-                        } else {
-                            location.reload();
-                        }
+                    Swal.fire(
+                        'Berhasil!',
+                        data.msg,
+                        'success'
+                    ).then((result) => {
+                        window.location.href = "<?= base_url('admin/laporan/tipeb'); ?>";
                     });
                 }
             },

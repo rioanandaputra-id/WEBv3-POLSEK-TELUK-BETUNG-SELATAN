@@ -2206,11 +2206,11 @@ class Admin extends BaseController
         $data = array();
         foreach ($list as $field) {
             $row = array();
-            $row[] = $field->ID_TIPEC;
-            $row[] = $field->NIK . ' |<br>' . $field->NAMA . ' |<br>' . $field->JENKEL;
-            $row[] = $field->NO_TLPN . ' |<br>' . $field->EMAIL;
-            $row[] = $field->ALAMAT . ' |<br>dibuat pada ' . $field->CREATE_AT;
-            $btn_view = '<a class="btn btn-sm btn-primary" title="Lihat" href="' . base_url('admin/laporan/tipec/detail/') . $field->ID_TIPEC  . '"><i class="fas fa-eye"></i></a>';
+            $row[] = $field->ID_TIPEB;
+            $row[] = "LP/B/" . $field->NO_LAP . "/" . getRomawi(date("n", strtotime($field->CREATE_AT))) . "/" . date("y", strtotime($field->CREATE_AT)) . "/RESTA BALAM/SEKTOR TBS" . ' |<br>' . $field->YG_TERJADI;
+            $row[] = $field->NAMA_PELAPOR . ' |<br>' . $field->TMPT_LAHIR_PELAPOR . ", " . $field->TGL_LAHIR_PELAPOR;
+            $row[] = $field->ALAMAT_PELAPOR . ' |<br> ' . $field->TLP_PELAPOR;
+            $btn_view = '<a class="btn btn-sm btn-warning" href="' . base_url('admin/laporan/tipeb/ubah/') . $field->ID_TIPEB  . '"><i class="fas fa-edit text-white"></i></a><a class="btn btn-sm btn-primary" title="Lihat" href="' . base_url('admin/laporan/tipeb/detail/') . $field->ID_TIPEB  . '"><i class="fas fa-eye"></i></a>';
             $row[] = '<div class="btn-group btn-group-toggle">' . $btn_view .  '</div>';
             $data[] = $row;
         }
@@ -2226,7 +2226,7 @@ class Admin extends BaseController
     {
         $this->load->model('backend/Tipeb_model', 'tipeb');
         $data = $this->input->post('data');
-        $query = $this->tipec->delete($data);
+        $query = $this->tipeb->delete($data);
         echo json_encode($query);
     }
     public function tipeb_save()
@@ -2596,6 +2596,272 @@ class Admin extends BaseController
             $respon = array(
                 "status" => "false",
                 "msg" => "Laporan Tipe B Tidak Disimpan",
+            );
+            echo json_encode($respon);
+        }
+    }
+    public function tipeb_detail($id)
+    {
+        $this->load->model('backend/Tipeb_model', 'tipeb');
+        $data['tipeb'] = $this->tipeb->get($id);
+        $this->global = ['pageTitle' => 'Menu Lihat Laporan Tipe B', 'menuPage' => 4];
+        $this->LvBackend('_backend/tipe-b/detail', $this->global, NULL, $data, NULL);
+    }
+    public function tipeb_edit($id)
+    {
+        $this->load->model('backend/Tipeb_model', 'tipeb');
+        $data['tipeb'] = $this->tipeb->get($id);
+        $this->global = ['pageTitle' => 'Menu Laporan Ubah Tipe B', 'menuPage' => 4];
+        $this->LvBackend('_backend/tipe-b/edit', $this->global, NULL, $data, NULL);
+    }
+    public function tipeb_update()
+    {
+        $this->load->model('backend/tipeb_model', 'tipeb');
+        $rules_1 = array(
+            array(
+                'field' => 'no',
+                'label' => 'Nomor Laporan',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'a',
+                'label' => 'Nama Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'b',
+                'label' => 'Tempat Lahir Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'c',
+                'label' => 'Tanggal Lahir Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'd',
+                'label' => 'Jenis Kelamin Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'e',
+                'label' => 'Pekerjaan Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'f',
+                'label' => 'Agama Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Belum Dipilih.',
+                ),
+            ),
+            array(
+                'field' => 'g',
+                'label' => 'Telpon Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'h',
+                'label' => 'Email Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'i',
+                'label' => 'Alamat Pelapor',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'j',
+                'label' => 'Waktu Kejadian',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'k',
+                'label' => 'Tempat Kejadian',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'l',
+                'label' => 'Apa Yang Terjadi',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'bb',
+                'label' => 'Uraian Kejadian',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'cc',
+                'label' => 'Tindakan Yang Diambil',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'dd',
+                'label' => 'Tindak Pidana Apa',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+            array(
+                'field' => 'ee',
+                'label' => 'Barang Bukti',
+                'rules' => 'required',
+                'errors' => array(
+                    'required' => '%s Tidak Boleh Kosong.',
+                ),
+            ),
+        );
+        $this->form_validation->set_rules($rules_1);
+        if ($this->form_validation->run() == TRUE) {
+            $data_1 = array(
+                'NO_LAP' => $_POST['no'],
+                'NAMA_PELAPOR' => $_POST['a'],
+                'TMPT_LAHIR_PELAPOR' =>  $_POST['b'],
+                'TGL_LAHIR_PELAPOR' => $_POST['c'],
+                'JENKEL_PELAPOR' =>  $_POST['d'],
+                'PEKERJAAN_PELAPOR' => $_POST['e'],
+                'AGAMA_PELAPOR' =>  $_POST['f'],
+                'TLP_PELAPOR' => $_POST['g'],
+                'EMAIL_PELAPOR' =>  $_POST['h'],
+                'ALAMAT_PELAPOR' => $_POST['i'],
+                'WAKTU_KEJADIAN' => $_POST['j'],
+                'TMPT_KEJADIAN' => $_POST['k'],
+                'YG_TERJADI' => $_POST['l'],
+                'URAIAN_KEJADIAN' =>  $_POST['bb'],
+                'TINDAKAN_DIAMBIL' =>  $_POST['cc'],
+                'TINDAK_PIDANA' => $_POST['dd'],
+                'BRG_BUKTI' =>  $_POST['ee'],
+                'CK_KORBAN' => (isset($_POST['cka'])) ? 1 : 0,
+                'CK_TERLAPOR' => (isset($_POST['ckb'])) ? 1 : 0,
+                'CK_SAKSI' => (isset($_POST['ckc'])) ? 1 : 0,
+            );
+            $this->tipeb->update($data_1, $_POST['id']);
+            $this->tipeb->delete_1($_POST['id']);
+        }
+        if (isset($_POST['m'])) {
+            $data_m = array();
+            foreach ($_POST['m'] as $x => $val) {
+                $data_a = array(
+                    'ID_TIPEB' => $_POST['id'],
+                    'NAMA' => $_POST['m'][$x],
+                    'TMPT_LAHIR' => $_POST['n'][$x],
+                    'TGL_LAHIR' => $_POST['o'][$x],
+                    'JENKEL' => $_POST['p'][$x],
+                    'ALAMAT' => $_POST['q'][$x],
+                    'KET' => 'Korban',
+                );
+                array_push($data_m, $data_a);
+            }
+            $this->tipeb->save_2($data_m);
+        }
+
+        if (isset($_POST['r'])) {
+            $data_r = array();
+            foreach ($_POST['r'] as $x => $val) {
+                $data_b = array(
+                    'ID_TIPEB' => $_POST['id'],
+                    'NAMA' => $_POST['r'][$x],
+                    'TMPT_LAHIR' => $_POST['s'][$x],
+                    'TGL_LAHIR' => $_POST['t'][$x],
+                    'JENKEL' => $_POST['u'][$x],
+                    'ALAMAT' => $_POST['v'][$x],
+                    'KET' => 'Terlapor',
+                );
+                array_push($data_r, $data_b);
+            }
+            $this->tipeb->save_2($data_r);
+        }
+        if (isset($_POST['w'])) {
+            $data_w = array();
+            foreach ($_POST['w'] as $x => $val) {
+                $data_c = array(
+                    'ID_TIPEB' => $_POST['id'],
+                    'NAMA' => $_POST['w'][$x],
+                    'TMPT_LAHIR' => $_POST['x'][$x],
+                    'TGL_LAHIR' => $_POST['y'][$x],
+                    'JENKEL' => $_POST['z'][$x],
+                    'ALAMAT' => $_POST['aa'][$x],
+                    'KET' => 'Saksi',
+                );
+                array_push($data_w, $data_c);
+            }
+            $this->tipeb->save_2($data_w);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if ($this->form_validation->run() == false) {
+            $respon = array(
+                "status" => "false",
+                "msg" => validation_errors(),
+            );
+            echo json_encode($respon);
+        } else {
+            $respon = array(
+                "status" => "true",
+                "msg" => "Laporan Tipe B Diubah",
             );
             echo json_encode($respon);
         }

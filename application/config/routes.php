@@ -43,3 +43,4 @@ $route['admin/laporan/tipec/detail/(:any)'] = 'admin/tipec_detail/$1';
 $route['admin/laporan/tipeb'] = 'admin/tipeb';
 $route['admin/laporan/tipeb/tambah'] = 'admin/tipeb_add';
 $route['admin/laporan/tipeb/ubah/(:num)'] = 'admin/tipeb_edit/$1';
+$route['admin/laporan/tipeb/detail/(:any)'] = 'admin/tipeb_detail/$1';

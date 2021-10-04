@@ -10,4 +10,12 @@ class Doc extends BaseController
         $data['tipec'] = $this->tipec->get($id);
         $this->load->view("_template/doc/tipec", $data);
     }
+    public function tipeb()
+    {
+        $id = explode(",", $this->input->get_post('id'));
+        $this->load->model('backend/Tipeb_model', 'tipeb');
+        $this->tipeb->update(array('STATUS' => 'SUDAH'), $id);
+        $data['tipeb'] = $this->tipeb->get($id);
+        $this->load->view("_template/doc/tipeb", $data);
+    }
 }

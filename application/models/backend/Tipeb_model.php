@@ -8,7 +8,6 @@ class Tipeb_model extends CI_Model
     }
     var $tb = 'tbl_tipeb';
     var $pk = 'ID_TIPEB';
-    var $fg = 'ID_TIPEB_DETAIL';
     var $tb1 = 'tbl_tipeb_detail';
 
     public function save_1($data)
@@ -30,7 +29,7 @@ class Tipeb_model extends CI_Model
     }
     public function getdet($id)
     {
-        $this->db->where($this->fg, $id);
+        $this->db->where($id);
         $this->db->from($this->tb1);
         $result = $this->db->get();
         return $result->result();
@@ -49,5 +48,9 @@ class Tipeb_model extends CI_Model
     public function delete($data)
     {
         return $this->db->where_in($this->pk, $data)->delete($this->tb);
+    }
+    public function delete_1($data)
+    {
+        return $this->db->where_in($this->pk, $data)->delete($this->tb1);
     }
 }

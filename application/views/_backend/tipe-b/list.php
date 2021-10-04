@@ -9,11 +9,12 @@
                                 <h1 class="h5 text-gray-800">MENU LAPORAN TIPE B</h1>
                             </div>
                             <div class="float-right">
-                                <form action="<?= base_url('doc/tipec'); ?>" method="post" target="_blank" id="printdong">
+                                <form action="<?= base_url('doc/tipeb'); ?>" method="post" target="_blank" id="printdong">
                                     <input type="hidden" name="id" id="printid">
                                 </form>
-                                <button class="btn btn-sm btn-danger" onclick="select_delete()">HAPUS <i class="fas fa-trash-alt"></i></button>
-                                <button class="btn btn-sm btn-primary" onclick="select_print()"><strong>PRINT</strong> <i class="fas fa-print"></i></button>
+                                <a href="<?= base_url('admin/laporan/tipeb/tambah'); ?>" class="btn btn-sm btn-primary"><i class="fas fa-plus-circle"></i> Tambah</a>
+                                <button class="btn btn-sm btn-danger" onclick="select_delete()">Hapus <i class="fas fa-trash-alt"></i></button>
+                                <button class="btn btn-sm btn-success" onclick="select_print()"><strong>Print</strong> <i class="fas fa-print"></i></button>
                             </div>
                         </div>
                     </div>
@@ -27,8 +28,8 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th></th>
+                                <th>Nomor Laporan</th>
                                 <th>Nama Pelapor</th>
-                                <th>Kontak Pelapor</th>
                                 <th>Alamat Pelapor</th>
                                 <th class="desktop">Aksi</th>
                             </tr>
@@ -76,7 +77,7 @@
             "serverSide": true,
             "order": [],
             "ajax": {
-                "url": "<?php echo site_url('admin/tipec_ajax/'); ?>",
+                "url": "<?php echo site_url('admin/tipeb_ajax/'); ?>",
                 "type": "POST",
                 "data": {
                     "STATUS": function() {
@@ -109,7 +110,7 @@
         $.each(rows_selected, function(index, rowId) {
             data.push(rowId);
         });
-        delete_tipec(data);
+        delete_tipeb(data);
         data = [];
     }
 
@@ -136,7 +137,7 @@
         })
     }
 
-    function delete_tipec(data) {
+    function delete_tipeb(data) {
         Swal.fire({
             title: 'Apa kamu yakin?',
             icon: 'warning',
@@ -149,7 +150,7 @@
             if (result.isConfirmed) {
                 $.ajax({
                     type: "POST",
-                    url: "<?= base_url('admin/tipec_delete/') ?>",
+                    url: "<?= base_url('admin/tipeb_delete/') ?>",
                     data: {
                         data: data
                     },
